@@ -94,7 +94,7 @@ a.eetfestijn {
 			</div>-->
 			</td></tr><tr><td>
 			<div id=sponsor>
-				<a href="http://www.desmaele.be/" target="_blank"><img src="img/sponsors/logosmaele.jpg" title='Klik om de site van onze sponsor "Glashandel De Smaele" te bezoeken!' /></a>
+				<a href="http://www.desmaele.be/" target="_blank"><img src="img/sponsors/logosmaele2.jpg" title='Klik om de site van onze sponsor "Glashandel De Smaele" te bezoeken!' /></a>
 			</div>
 			</td></tr></table>
 		</td>
