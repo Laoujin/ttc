@@ -30,7 +30,7 @@ a.eetfestijn {
 	color: #0D0140;
 }
 
-#sponsor {
+.sponsor {
 	width: 100%; 
 	background: #5282a6;
 	color: orange;
@@ -40,7 +40,7 @@ a.eetfestijn {
 	padding: 5px;
 }
 
-#sponsor img {
+.sponsor img {
 	border: solid 1px black;
 }
 
@@ -64,39 +64,57 @@ a.eetfestijn {
 	</tr>
 	<tr>
 		<td width="340" valign=top>
-			<table width="100%" cellpadding=0 cellspacing=0><tr><td>
-			<!--<div id="eetfestijn">
-				<b>Zaterdag 21 september 2013<br>
-				Eetfestijn TTC Erembodegem</b>
-				
-				<br><br>
-				
-				Van 18u00 tot 22u00 in zaal <a class="eetfestijn" href="https://maps.google.com/maps?q=Botermelkstraat+63,+9300+Aalst&hl=en&ll=50.953115,4.061058&spn=0.009449,0.023475&sll=50.952442,4.062345&sspn=0.001188,0.002934&t=m&hnear=Botermelkstraat+63,+Aalst+9300+Aalst,+Oost-Vlaanderen,+Vlaams+Gewest,+Belgium&z=16" target=_blank>Sint-Paulus</a><br>
-				Botermelkstraat 63, 9300 Aalst
-				
-				<br><br>
-				
-				<table width=100% border=0 align=center>
-				<tr><th colspan=2><font size=+1>Menu</font></th></tr>
+			<table width="100%" cellpadding=0 cellspacing=0>
+				<!--
 				<tr>
-					<td width="99%"><b>Varkenshaasje</b> met sla, tomaten<br> en saus naar keuze</td><td width="1%">€15</td>
+					<td>
+						<div id="eetfestijn">
+							<b>Zaterdag 21 september 2013<br>
+							Eetfestijn TTC Erembodegem</b>
+							
+							<br><br>
+							
+							Van 18u00 tot 22u00 in zaal <a class="eetfestijn" href="https://maps.google.com/maps?q=Botermelkstraat+63,+9300+Aalst&hl=en&ll=50.953115,4.061058&spn=0.009449,0.023475&sll=50.952442,4.062345&sspn=0.001188,0.002934&t=m&hnear=Botermelkstraat+63,+Aalst+9300+Aalst,+Oost-Vlaanderen,+Vlaams+Gewest,+Belgium&z=16" target=_blank>Sint-Paulus</a><br>
+							Botermelkstraat 63, 9300 Aalst
+							
+							<br><br>
+							
+							<table width=100% border=0 align=center>
+							<tr><th colspan=2><font size=+1>Menu</font></th></tr>
+							<tr>
+								<td width="99%"><b>Varkenshaasje</b> met sla, tomaten<br> en saus naar keuze</td><td width="1%">€15</td>
+							</tr>
+							<tr>
+								<td><b>Tongrolletjes</b> in mosterdsaus</td><td>€15</td>
+							</tr>
+							<tr>
+								<td><b>Kindermenu</b>: kip met appelmoes</td><td><font size=-1>€7,5</font></td>
+							</tr>
+							</table>
+							
+							<br>
+							Steunkaarten zijn ook beschikbaar voor €3
+						</div>
+					</td>
+				</tr>
+				-->
+				<tr>
+					<td>
+						<div class=sponsor>
+							<a href="http://www.desmaele.be/" target="_blank">
+								<img src="img/sponsors/smaele.jpg" title='Klik om de site van onze sponsor "Glashandel De Smaele" te bezoeken!' width="350" height="246" />
+							</a>
+						</div>
+					</td>
 				</tr>
 				<tr>
-					<td><b>Tongrolletjes</b> in mosterdsaus</td><td>€15</td>
+					<td>
+						<div class=sponsor>
+							<img src="img/sponsors/symphony.jpg" />
+						</div>
+					</td>
 				</tr>
-				<tr>
-					<td><b>Kindermenu</b>: kip met appelmoes</td><td><font size=-1>€7,5</font></td>
-				</tr>
-				</table>
-				
-				<br>
-				Steunkaarten zijn ook beschikbaar voor €3
-			</div>-->
-			</td></tr><tr><td>
-			<div id=sponsor>
-				<a href="http://www.desmaele.be/" target="_blank"><img src="img/sponsors/logosmaele2.jpg" title='Klik om de site van onze sponsor "Glashandel De Smaele" te bezoeken!' /></a>
-			</div>
-			</td></tr></table>
+			</table>
 		</td>
 		<td valign=top width="625">
 			<table cellpadding=0 cellspacing=0 id=maintable>
