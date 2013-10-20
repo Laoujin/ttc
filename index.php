@@ -65,7 +65,7 @@ a.eetfestijn {
 	<tr>
 		<td width="340" valign=top>
 			<table width="100%" cellpadding=0 cellspacing=0><tr><td>
-			<div id="eetfestijn">
+			<!--<div id="eetfestijn">
 				<b>Zaterdag 21 september 2013<br>
 				Eetfestijn TTC Erembodegem</b>
 				
@@ -91,7 +91,7 @@ a.eetfestijn {
 				
 				<br>
 				Steunkaarten zijn ook beschikbaar voor €3
-			</div>
+			</div>-->
 			</td></tr><tr><td>
 			<div id=sponsor>
 				<a href="http://www.desmaele.be/" target="_blank"><img src="img/sponsors/logosmaele.jpg" title='Klik om de site van onze sponsor "Glashandel De Smaele" te bezoeken!' /></a>
