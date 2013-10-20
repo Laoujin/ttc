@@ -10,10 +10,13 @@
 
 <table width='100%' class='maintable'>
 	<tr>
-		<th colspan=2>Lokaal</th>
+		<th width="25%">Lokaal</th>
+		<th width="25%">Training</th>
+		<th width="25%">Competitie</th>
+		<th width="25%">Inschrijvingsgeld</th>
 	</tr>
 	<tr>
-		<td valign=top colspan=2>
+		<td valign=top>
 			<?php
 			$first = true;
 			$lokaal = $db->GetClubLokaal(CLUB_ID, false);
@@ -25,7 +28,19 @@
 			}
 			?>
 		</td>
+		<td valign=top align=center>
+			Dinsdag en donderdag vanaf 20u
+		</td>
+		<td valign=top align=center>
+			Maandag, woensdag en vrijdag om 20u
+		</td>
+		<td align=center>
+			&euro;90 voor volwassenen<br>
+			&euro;50 voor -18 jarigen
+		</td>
 	</tr>
+</table>
+<table width='100%' class='maintable'>
 	<tr>
 		<th colspan=2>Bestuur</th>
 	</tr>
