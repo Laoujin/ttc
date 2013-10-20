@@ -1,0 +1,215 @@
+body
+{
+	font-family: Arial, Verdana, georgia, Geneva, "Gill Sans", sans-serif;
+	color: white;
+	background-color: #0D0140; 
+	font-size: 10px;
+	margin-top: 0px;
+	margin-left: 0px;
+}
+
+.menutable
+{
+	border-color: black;
+	background-color: #EBEBEB; 
+	border-style: solid;
+	border-width: 1px;
+	color: black;
+	list-style: none;
+}
+
+.menuheader
+{
+	text-align: center;
+	font-weight: bold;
+}
+
+.menuitem
+{
+	padding-top: 4px;
+	padding-bottom: 4px;
+	padding-left: 30px;
+	background-image: url(img/layout/palet2.png);
+	background-repeat: no-repeat;
+	background-position: 5px;
+	vertical-align: middle;
+}
+
+h1
+{
+	color: #000000;
+	background-color: #E67817;
+	padding: 2px;
+	border-style: solid;
+	border-color: black;
+	border-width: 1px;
+	font-size: 18px;
+}
+
+.maintable
+{
+	border: 1px solid white;
+	background-color: #EBEBEB;
+	color: black;
+	border-collapse: collapse;
+}
+
+.maintable th
+{
+	border: 1px solid white;
+	padding: 5px;
+	background-color: #3D3D3D; /*#69D2E7;*/
+	text-align: center;
+	font-weight: bold;
+	color: #D3D3D3; /*#E67817;*/
+}
+
+.subheader
+{
+	border: 1px solid white;
+	padding: 3px;
+	background-color: #D3D3D3;
+	text-align: left;
+	font-weight: bold;
+}
+
+.maintable td
+{
+	border: 1px solid white;
+	padding: 3px;
+}
+
+.maintable .rowa
+{
+	color: black;
+}
+
+.rowselected
+{
+	background-color: #E67817;
+}
+
+.maintable .rowpassed a
+{
+	color: #3D3D3D;
+}
+
+.rowpassed
+{
+	color: #3D3D3D;
+}
+
+.rowheader
+{
+	font-weight: bold;
+	/*background-color: #E0E4CC;*/
+}
+
+/*
+blauw: #69D2E7
+licht: #A7DBD8
+lichter: #E0E4CC
+oranje: #F38630
+donker oranje: #FA6900
+*/
+/*#0075C1;*/ /*#0D0140;*/
+/*#A7DBD8;*/
+
+.icon
+{
+	border: 0px;
+	top: 2px;
+}
+
+a
+{
+	text-decoration: none;
+	color: white;	
+}
+
+a:hover
+{
+	text-decoration: underline;
+}
+
+.menutable a
+{
+	color: black;
+}
+
+.maintable a
+{
+	color: black;
+}
+
+.emptytable
+{
+	color: black;
+	padding: 0px;
+	margin: 0px;
+	border: 0px solid black;
+}
+
+.emptytable td
+{
+	border-style: none;
+	border-color: black;
+}
+
+.help
+{
+	font-size: 10px;
+}
+
+.popup
+{
+	position: absolute;
+	display: none;
+	width: 350px;
+	height: 300px;
+	left: 100px;
+	top: 100px;
+	color: black;
+	background-color: #FFFFFF; /*#EBEBEB*/
+	border: 1px solid #000000;
+}
+
+#popupWedstrijdVerslag
+{
+	padding: 2px;
+	font-size: 12px;
+}
+
+.error
+{
+	color: red;
+	font-weight: bold;
+}
+
+.popupClose
+{
+	display: block;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+#waiter
+{
+	display: none;
+	width: 150px;
+	height: 100px;
+	left: 100px;
+	top: 100px;
+	color: black;
+	background-color: #FFFFFF; /*#EBEBEB*/
+	border: 1px solid #000000;
+	text-align: center;
+}
+
+.waiterContent
+{
+	position: absolute;
+	top: 30px;
+	left: 60px;
+}

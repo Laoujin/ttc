@@ -1,0 +1,51 @@
+	
+#entersite{
+	width: 300px; 
+	float: right; 
+	position: relative; 
+	top: 0px; 
+	left: 50px;
+}
+
+html, body
+{
+	font-family: Verdana, Arial, georgia, Geneva, "Gill Sans", sans-serif;
+	color: white;
+	background-color: #0D0140;
+	font-size: 10px;
+	text-align: center;
+}
+
+#eetfestijn td, th
+{
+	font-family: Verdana, Arial, georgia, Geneva, "Gill Sans", sans-serif;
+	font-size: 14px;
+	color: #0D0140;
+}
+
+a:focus, a:active {
+	outline: 0 none;
+}
+
+.entera
+{
+	text-decoration: none;
+	color: white;
+	font-size: 16px;	
+}
+
+.entera:hover
+{
+	text-decoration: underline;
+}
+
+a
+{
+	color: white;
+	text-decoration: none;
+}
+
+a:hover
+{
+	text-decoration: underline;	
+}

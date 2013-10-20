@@ -1,0 +1,105 @@
+body
+{
+	font-family: Verdana, Arial, georgia, Geneva, "Gill Sans", sans-serif;
+	color: white;
+	background-color: #0D0140; 
+	font-size: 10px;
+	margin-top: 0px;
+	margin-left: 0px;
+}
+
+.menutable
+{
+	border-color: black;
+	background-color: #EBEBEB; 
+	border-style: solid;
+	border-width: 1px;
+	color: black;
+	list-style: none;
+}
+
+.subheader
+{
+	border: 1px solid white;
+	padding: 3px;
+	background-color: #D3D3D3;
+	text-align: left;
+	font-weight: bold;
+}
+
+.menuheader
+{
+	text-align: center;
+	font-weight: bold;
+}
+
+h1, h2
+{
+	color: #FFFFFF;
+	background-color: #E67817;
+	padding: 2px;
+	border-style: solid;
+	border-color: black;
+	border-width: 1px;
+	font-size: 18px;
+}
+
+.maintable
+{
+	border: 1px solid white;
+	background-color: #EBEBEB;
+	color: black;
+	border-collapse: collapse;
+}
+
+.maintable th
+{
+	border: 1px solid white;
+	padding: 5px;
+	background-color: #69D2E7;
+	text-align: center;
+	font-weight: bold;
+}
+
+.maintable td
+{
+	border: 1px solid white;
+	padding: 3px;
+	
+}
+
+.rowselected
+{
+	background-color: #FA6900;
+}
+
+.rowheader
+{
+	font-weight: bold;
+	/*background-color: #E0E4CC;*/
+}
+
+.error
+{
+	color: red;
+	font-weight: bold;
+	text-align: center;
+	font-size: 16px;
+	border: 1px solid white;
+	background-color: #EBEBEB;
+}
+
+a
+{
+	color: brown;
+}
+
+a:hover
+{
+	
+}
+
+.help
+{
+	font-size: 10px;
+}
