@@ -16,7 +16,7 @@
 		<th width="25%">Inschrijvingsgeld</th>
 	</tr>
 	<tr>
-		<td valign=top>
+		<td valign=top align=center>
 			<?php
 			$first = true;
 			$lokaal = $db->GetClubLokaal(CLUB_ID, false);
