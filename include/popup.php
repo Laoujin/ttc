@@ -270,8 +270,7 @@ function Toggle(popup)
 		FadeIn(popup);
 }
 
-function ShowPopup(link, popup)
-{
+function ShowPopup(link, popup) {
    var kalender = link.attr('kalender');
    responseCell = link.parent();
    var hiddenField = $("#popupID");
@@ -282,67 +281,67 @@ function ShowPopup(link, popup)
    $("#popupIsThuis").val(link.attr('thuis'));
    
    $('#popupPloegThuisNaam').text(responseCell.prev().prev().text());
-	 $('#popupPloegUitNaam').text(responseCell.prev().text());
+   $('#popupPloegUitNaam').text(responseCell.prev().text());
    
    $.getJSON("json.php", {id: kalender, type: 'verslag'}, function(data) {
-   	verslagData = data;
-   	$('#popupWedstrijdWO').html('&nbsp;');
-   	if (data == null || data.WO == 1)
-   	{
-   		$('#popupPloegThuis').html('&nbsp;');
-			$('#popupPloegUit').html('&nbsp;');
-			$('#popupSpelers').hide();
-			
-			if (data != null)
-			{
-				$('#popupWedstrijdWO').html('WO');
-				$('#popupVerslagID').val(data.VerslagID);
-				$('#popupWedstrijdVerslag').html(data.Beschrijving);
-			}
-			else
-			{
-				$('#popupVerslagID').val('');
-				$('#popupWedstrijdVerslag').html('&nbsp;');
-			}
-			
-			ShowEditPopup($("#verslagEditPopup"));
-			return;
-   	}
-   	else
-   	{
-   		$('#popupVerslagID').val(data.VerslagID);
-			$('#popupPloegThuis').html(data.UitslagThuis);
-			$('#popupPloegUit').html(data.UitslagUit);
-			$('#popupWedstrijdVerslag').html(data.Beschrijving + "<br><br>Verslag door <b>" + verslagData.Naam + "</b>");
-		
-			if (data.Thuis.length > 0)
-			{
-				$('#popupSpelers').show();
-				if (link.attr('thuis') == "1")
+		verslagData = data;
+		$('#popupWedstrijdWO').html('&nbsp;');
+		if (data == null || data.WO == 1)
+		{
+			$('#popupPloegThuis').html('&nbsp;');
+				$('#popupPloegUit').html('&nbsp;');
+				$('#popupSpelers').hide();
+				
+				if (data != null)
 				{
-					$('#popupSpelersThuis').html(data.Thuis);
-					$('#popupSpelersUit').html(data.Uit);
+					$('#popupWedstrijdWO').html('WO');
+					$('#popupVerslagID').val(data.VerslagID);
+					$('#popupWedstrijdVerslag').html(data.Beschrijving);
 				}
 				else
 				{
-					$('#popupSpelersUit').html(data.Thuis);
-					$('#popupSpelersThuis').html(data.Uit);
+					$('#popupVerslagID').val('');
+					$('#popupWedstrijdVerslag').html('&nbsp;');
 				}
-			}
-			else
-			{
-				$('#popupSpelers').hide();
-			}
-   	}
-   	
-   	popup.width($(window).width() / 2);
-   	popup.height($(window).height() / 2);
-   	popup.centerInClient();
-   
-   	$("#verslagEditPopup").hide();
-   	if (currentKalender == kalender) Toggle(popup);
-   	else FadeIn(popup);
-	 });
+				
+				ShowEditPopup($("#verslagEditPopup"));
+				return;
+		}
+		else
+		{
+			$('#popupVerslagID').val(data.VerslagID);
+				$('#popupPloegThuis').html(data.UitslagThuis);
+				$('#popupPloegUit').html(data.UitslagUit);
+				$('#popupWedstrijdVerslag').html(data.Beschrijving + "<br><br>Verslag door <b>" + verslagData.Naam + "</b>");
+			
+				if (data.Thuis.length > 0)
+				{
+					$('#popupSpelers').show();
+					if (link.attr('thuis') == "1")
+					{
+						$('#popupSpelersThuis').html(data.Thuis);
+						$('#popupSpelersUit').html(data.Uit);
+					}
+					else
+					{
+						$('#popupSpelersUit').html(data.Thuis);
+						$('#popupSpelersThuis').html(data.Uit);
+					}
+				}
+				else
+				{
+					$('#popupSpelers').hide();
+				}
+		}
+		
+		popup.width($(window).width() / 2);
+		popup.height($(window).height() / 2);
+		popup.centerInClient();
+	   
+		$("#verslagEditPopup").hide();
+		if (currentKalender == kalender) Toggle(popup);
+		else FadeIn(popup);
+	});
 }
 
 function EnablePuntenIngave(isChecked)
@@ -360,7 +359,7 @@ function EnablePuntenIngave(isChecked)
 $(document).ready(function() {
 	$(".verslagLink").click(function(event) {
 		ShowPopup($(this), $("#verslagPopup"));
-    return false;
+		return false;
 	});
 	
 	VerstuurVerslag();

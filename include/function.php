@@ -1,7 +1,7 @@
 <?php
 	function VBCode($bbcode)
 	{
-		return str_replace("\n", "<br>", str_replace("\r\n", "<br>", str_replace('"', '\\"', $record['Beschrijving'])));
+		return str_replace("\n", "<br>", str_replace("\r\n", "<br>", str_replace('"', '\\"', $bbcode)));
 	
 	  //$bbcode = eregi_replace("\\[b\\]", quotemeta("<b>"), $bbcode);
 	  //$bbcode = eregi_replace("\\[u\\]", quotemeta("<u>"), $bbcode);
