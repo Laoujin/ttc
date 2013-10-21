@@ -9,7 +9,7 @@ Class MySqlWrapper
 	var $Server = 'localhost';
 	var $Login = 'root';
 	var $Password = '';
-	var $Database = 'ttc';
+	var $Database = 'ttc_erembodegem';
 	
 	var $Spelers = Array();
 	
