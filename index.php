@@ -33,7 +33,7 @@ a.eetfestijn {
 .sponsor {
 	width: 100%; 
 	background: #5282a6;
-	color: orange;
+	color: black;
 	border: solid 3px white;
 	text-align: center;
 	margin-top: 10px;
@@ -110,7 +110,36 @@ a.eetfestijn {
 				<tr>
 					<td>
 						<div class=sponsor>
-							<img src="img/sponsors/symphony.jpg" />
+							<b>Slagerij Guy</b>
+							<br>Erembodegem Dorp 72
+							<br>9320 Erembodegem
+							<br>Tel: 053 / 21 13 59
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class=sponsor>
+							<a href="http://www.doopsuikersymphony.be/" target="_blank">
+								<img src="img/sponsors/symphony.jpg" title='Klik om de site van onze sponsor "Doopsuiker Symphony" te bezoeken!' width="148" height="75" />
+							</a>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class=sponsor>
+							Brasserie Traiteur <a href="http://www.tkleinoffer.be/">'t Klein Offer</a>
+							<br>Erembodegem Dorp 47
+							<br>B-9320 Erembodegem
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class=sponsor>
+							Bakkerij <a href="http://www.bakkerijvanlierde.be/">Karel Van Lierde</a>
+							<br>Tel: 053 / 21 27 20
 						</div>
 					</td>
 				</tr>
