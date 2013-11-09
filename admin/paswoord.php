@@ -3,7 +3,7 @@
 	define("KALENDER", "kalender");
 	include_once '../include/header.php';
 	
-	if (!$security->Spelers())
+	if (!$security->Any())
 		header('Location: index.php');
 	
 	if (isset($_POST['newpass']))
