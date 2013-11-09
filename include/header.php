@@ -105,10 +105,12 @@
 			return !(($this->level & TOEGANG_ADMIN) == 0);
 		}
 		
-		function Verslag($spelerId = '')
+		function Verslag($verslagId = '')
 		{
-			if ($spelerId == '') return !(($this->level & TOEGANG_SPELER) == 0);
-			return ((($this->level & TOEGANG_KAPITEIN) != 0 && $spelerId == $_SESSION['userid']) || (($this->level & TOEGANG_ADMIN) != 0));
+			if ($verslagId == '') return !(($this->level & TOEGANG_SPELER) == 0);
+			// BUG: $verslagId == $_SESSION['userid']) => That's obviously never going to work...
+			//return ((($this->level & TOEGANG_KAPITEIN) != 0 && $verslagId == $_SESSION['userid']) || (($this->level & TOEGANG_ADMIN) != 0));
+			return (($this->level & TOEGANG_KAPITEIN) != 0 || ($this->level & TOEGANG_ADMIN) != 0);
 		}
 		
 		function Any()
