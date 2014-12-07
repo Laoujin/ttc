@@ -40,6 +40,26 @@ a.eetfestijn {
 	padding: 5px;
 }
 
+.tkleinoffer {
+	background-image: url("img/sponsors/tkleinoffer.png");
+	background-repeat: no-repeat;
+    background-position: center; 
+	height: 255px;
+}
+
+.tkleinoffer div {
+	color: #8C6C51;
+	padding-top: 130px;
+	padding-left: 25px;
+	text-align: left;
+	font-weight: bold;
+	font-size: 13px;
+}
+
+.tkleinoffer a {
+	color: #8C6C51;
+}
+
 .sponsor img {
 	border: solid 1px black;
 }
@@ -128,10 +148,15 @@ a.eetfestijn {
 				</tr>
 				<tr>
 					<td>
-						<div class=sponsor>
-							Brasserie Traiteur <a href="http://www.tkleinoffer.be/">'t Klein Offer</a>
-							<br>Erembodegem Dorp 47
-							<br>B-9320 Erembodegem
+						<div class='sponsor tkleinoffer'>
+							<div>
+							Peter en Lauren Neckebroeck
+							<br>Erembodegem-Dorp, 47
+							<br>9320 Erembodegem
+							<br>053/82 86 41
+							<br><a href="http://www.tkleinoffer.be/">www.tkleinoffer.be</a>
+							<br><a href="mailto:info@tkleinoffer.com">info@tkleinoffer.com</a>
+							</div>
 						</div>
 					</td>
 				</tr>
