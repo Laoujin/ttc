@@ -40,6 +40,15 @@ a.eetfestijn {
 	padding: 5px;
 }
 
+#sponserBottom td {
+	background: #5282a6;
+	color: black;
+	border: solid 3px white;
+	text-align: center;
+	margin-top: 10px;
+	padding: 5px;
+}
+
 .tkleinoffer {
 	background-image: url("img/sponsors/tkleinoffer.png");
 	background-repeat: no-repeat;
@@ -139,15 +148,6 @@ a.eetfestijn {
 				</tr>
 				<tr>
 					<td>
-						<div class=sponsor>
-							<a href="http://www.doopsuikersymphony.be/" target="_blank">
-								<img src="img/sponsors/symphony.jpg" title='Klik om de site van onze sponsor "Doopsuiker Symphony" te bezoeken!' width="148" height="75" />
-							</a>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td>
 						<div class='sponsor tkleinoffer'>
 							<div>
 							Peter en Lauren Neckebroeck
@@ -157,14 +157,6 @@ a.eetfestijn {
 							<br><a href="http://www.tkleinoffer.be/">www.tkleinoffer.be</a>
 							<br><a href="mailto:info@tkleinoffer.com">info@tkleinoffer.com</a>
 							</div>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<div class=sponsor>
-							Bakkerij <a href="http://www.bakkerijvanlierde.be/">Karel Van Lierde</a>
-							<br>Tel: 053 / 21 27 20
 						</div>
 					</td>
 				</tr>
@@ -232,10 +224,26 @@ a.eetfestijn {
 						<?php echo $params[PARAM_LASTUPDATE]?>
 					</td>
 				</tr>
+				<tr>
+					<td colspan="3">
+						<div style="margin-top: 10px"></div>
+
+						<table width="100%" height="95" border="0" cellspacing="5" id="sponserBottom"><tr><td width="50%" align="center">
+							<a href="http://www.doopsuikersymphony.be/" target="_blank">
+								<img src="img/sponsors/symphony.jpg" title='Klik om de site van onze sponsor "Doopsuiker Symphony" te bezoeken!' width="148" height="75" />
+							</a>
+						</td><td width="50%" align="center">
+						
+							Bakkerij <a href="http://www.bakkerijvanlierde.be/">Karel Van Lierde</a>
+							<br>Tel: 053 / 21 27 20
+						</td></tr></table>
+					</td>
+				</tr>
 			</table>
 		</td>
 	</tr>
 </table>
+
 
 </body>
 <script type="text/javascript">
