@@ -19,9 +19,8 @@ $objPHPExcel->setActiveSheetIndex(0)
             ->setCellValue('A1', 'Naam')
             ->setCellValue('B1', 'Adres')
             ->setCellValue('C1', 'Stad')
-            ->setCellValue('D1', 'Tel')
-            ->setCellValue('E1', 'GSM')
-            ->setCellValue('F1', 'E-mail');
+            ->setCellValue('D1', 'GSM')
+            ->setCellValue('E1', 'E-mail');
 
 //$objPHPExcel->getActiveSheet()->getStyle('A1:F1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 $objPHPExcel->getActiveSheet()->getStyle('A1:F1')->getFont()->setBold(true);
@@ -34,22 +33,21 @@ while ($record = mysql_fetch_array($result))
             ->setCellValue('A' . $rowIndex, $record['Naam'])
             ->setCellValue('B' . $rowIndex, $record['Adres'])
             ->setCellValue('C' . $rowIndex, $record['Gemeente'])
-            ->setCellValue('D' . $rowIndex, $record['Tel'])
-            ->setCellValue('E' . $rowIndex, $record['GSM'])
-            ->setCellValue('F' . $rowIndex, $record['Email']);
+            ->setCellValue('D' . $rowIndex, $record['GSM'])
+            ->setCellValue('E' . $rowIndex, $record['Email']);
 
   if ($record['Email'] != "")
   {
-    $objPHPExcel->getActiveSheet()->getCell('F' . $rowIndex)->getHyperlink()->setUrl('mailto:' . $record['Email']);
+    $objPHPExcel->getActiveSheet()->getCell('E' . $rowIndex)->getHyperlink()->setUrl('mailto:' . $record['Email']);
   }
 }
 
 // Email color & underline
-$objPHPExcel->getActiveSheet()->getStyle('F2:F' . $rowIndex)->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_BLUE);
-$objPHPExcel->getActiveSheet()->getStyle('F2:F' . $rowIndex)->getFont()->setUnderline(true);
+$objPHPExcel->getActiveSheet()->getStyle('E2:E' . $rowIndex)->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_BLUE);
+$objPHPExcel->getActiveSheet()->getStyle('E2:E' . $rowIndex)->getFont()->setUnderline(true);
 
 // Set good column widths
-foreach(range('A','F') as $columnID)
+foreach(range('A','E') as $columnID)
 {
     $objPHPExcel->getActiveSheet()->getColumnDimension($columnID)->setAutoSize(true);
 }
@@ -62,7 +60,7 @@ $styleArray = array(
           )
       )
   );
-$objPHPExcel->getActiveSheet()->getStyle('A1:F' . $rowIndex)->applyFromArray($styleArray);
+$objPHPExcel->getActiveSheet()->getStyle('A1:E' . $rowIndex)->applyFromArray($styleArray);
 
 
 
