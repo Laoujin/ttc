@@ -47,7 +47,7 @@
 			</tr>
 			<tr>
 				<td>Login:</td>
-				<td><?php echo $db->BuildSpelerCombo("login", CLUB_ID, $_COOKIE['login'], true)?></td>
+				<td><?php echo $db->BuildSpelerCombo("login", CLUB_ID, isset($_COOKIE['login']) ? $_COOKIE['login'] : "", true)?></td>
 			</tr>
 			<tr>
 				<td>Paswoord:</td>
@@ -72,7 +72,7 @@
 			<tr>
 				<td>Login:</td>
 				<td>
-					<?php echo $db->BuildSpelerCombo("emailLogin", CLUB_ID, $_POST['emailLogin'], true)?>
+					<?php echo $db->BuildSpelerCombo("emailLogin", CLUB_ID, isset($_COOKIE['emailLogin']) ? $_POST['emailLogin'] : "", true)?>
 				</td>
 			</tr>
 			<tr>

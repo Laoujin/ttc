@@ -34,7 +34,7 @@
 						if ($security->Admin()) echo "<a href=../json.php?type=admin>JSon</a><br>";
 						if ($security->Admin()) echo "<a href='sitemapgenerator.php'>Sitemap</a><br>";
 						echo "<br>";
-						if ($_SESSION['user'] != "") echo "<a href=index.php?uitloggen=true>Uitloggen</a><br>";
+						if (isset($_SESSION['user']) && $_SESSION['user'] != "") echo "<a href=index.php?uitloggen=true>Uitloggen</a><br>";
 						?>
 					</td>
 				</tr>
