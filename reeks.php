@@ -135,7 +135,7 @@
 			
 			$result = $db->Query("SELECT r.ID AS ReeksID, Competitie, Reeks, ReeksType, ReeksCode, cp.Code, cp.ID AS ClubPloeg, r.LinkID
 													FROM reeks r JOIN clubploeg cp ON r.ID=cp.ReeksID AND cp.ClubID=".CLUB_ID."
-													WHERE Competitie='".$comp."' AND Jaar=".$params[PARAM_JAAR]);
+													WHERE Competitie='".$comp."' AND Jaar=".$params[PARAM_JAAR]." ORDER BY cp.Code");
 
 			while ($record = mysql_fetch_array($result)) PrintPloeg($record, $comp);
 		}
