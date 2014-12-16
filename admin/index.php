@@ -92,6 +92,7 @@
 		echo "Gebruik het menu om de site te beheren.";
 		echo "<br><br>";
 		echo "PHP Versie: " . phpversion();
+		//echo phpinfo();
 	}
 	include_once 'admin_end.php';
 ?>

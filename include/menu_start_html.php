@@ -1,5 +1,6 @@
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title><?php echo (defined("PAGE_TITLE") ? PAGE_TITLE . " - " : ""); ?>TTC Erembodegem</title>
 <script language="javascript" type="text/javascript" src="include/jquery.js"></script>
 <script language="javascript" type="text/javascript" src="include/jqueryext.js"></script>

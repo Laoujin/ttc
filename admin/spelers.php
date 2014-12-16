@@ -107,8 +107,8 @@ while ($record = mysql_fetch_array($result))
 	$i++;
 	echo "<input type=hidden name=id$i value=".$record['ID'].">";
 	echo "<tr>";
-	echo "<td><input type=text name=naam$i value='".$db->Html($record['Naam'])."'></td>";
-	echo "<td><input type=text name=naamKort$i value='".$db->Html($record['NaamKort'])."'></td>";
+	echo "<td><input type=text name=naam$i value=\"".$db->Html($record['Naam'])."\"></td>";
+	echo "<td><input type=text name=naamKort$i value=\"".$db->Html($record['NaamKort'])."\"></td>";
 	echo "<td align=center>"
 			.GetClub("clubIdVTTL$i", $record['ClubIdVTTL'])."&nbsp;"
 			."<input type=text size=3 name=volgnummerVTTL$i value=".$record['VolgnummerVTTL'].">&nbsp;"

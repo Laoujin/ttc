@@ -11,6 +11,7 @@
 ?>
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>TTC Erembodegem</title>
 <meta name="description" content="Officiele website van tafeltennisclub Erembodegem">
 <meta name="keywords" content="TTC, Erembodegem, ttc, Ttc, tafeltennis, tafeltennisclub, kvkt, vttl, ping, pong, ping-pong,  sport, gezond, blijven plakken, bier, avondje weg">

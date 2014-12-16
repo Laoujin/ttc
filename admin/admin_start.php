@@ -5,6 +5,14 @@
 <script language="javascript" type="text/javascript" src="../include/jquery.js"></script>
 <script language="javascript" type="text/javascript" src="../include/datetimepicker.js"></script>
 <link href="layout.css" rel="stylesheet" type="text/css" />
+<script>
+$(function() {
+	$("#spelersexport").click(function() {
+		e.preventDefault();
+		window.location.href = "spelersexport.php";
+	});
+});
+</script>
 </head>
 <body>
 <table width="100%">
@@ -34,8 +42,12 @@
 						if ($security->Any()) echo "<a href=paswoord.php>Paswoord</a><br>";
 						if ($security->Admin()) echo "<a href=../json.php?type=admin>JSon</a><br>";
 						if ($security->Admin()) echo "<a href='sitemapgenerator.php'>Sitemap</a><br>";
-						echo "<br>";
-						if (isset($_SESSION['user']) && $_SESSION['user'] != "") echo "<a href=index.php?uitloggen=true>Uitloggen</a><br>";
+						if (isset($_SESSION['user']) && $_SESSION['user'] != "") 
+						{
+							/*echo "<a href='spelersexport.php' id='spelersexport'>Spelerslijst (Excel)</a><br>";
+							echo "<br>";*/
+							echo "<a href=index.php?uitloggen=true>Uitloggen</a><br>";
+						}
 						?>
 					</td>
 				</tr>

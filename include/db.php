@@ -1,5 +1,5 @@
 <?php
-define("DEBUG", true); // false=provide .be credentials
+define("DEBUG", true);
 define("ANNOYING_DEBUG", false); // Print all SQL statements
 
 Class MySqlWrapper
@@ -14,7 +14,7 @@ Class MySqlWrapper
 	
 	function MySqlWrapper()
 	{		
-		if (!DEBUG)
+		if ($_SERVER["REMOTE_ADDR"] != "127.0.0.1" && $_SERVER["REMOTE_ADDR"] != "::1")
 		{
 			$this->Server = 'ttc-erembodegem.be.mysql';
 			$this->Login = 'ttc_erembodegem';
@@ -56,7 +56,7 @@ Class MySqlWrapper
 	function Html($to_change)
 	{
 		if (!$to_change) return "&nbsp;";
-		return stripslashes(htmlentities($to_change, ENT_QUOTES));
+		return htmlspecialchars($to_change);
 	}
 	
 	function ParseDate($date)
