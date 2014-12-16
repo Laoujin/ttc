@@ -31,17 +31,13 @@ include_once 'include/popup.php';
 						<li class="menuitem"><a href=clubinfo.php>Clubinfo</a>
 						<li class="menuitem"><a href=kalender.php>Kalender</a>
 						<li class="menuitem"><a href=spelers.php>Spelers</a>
-						<!--<li class="menuitem"><a href=sponsors.php>Sponsors</a>-->
 						<li class="menuitem"><a href=reeks.php?competitie=<?php echo COM_VTTL?>>VTTL</a>
 						<li class="menuitem"><a href=reeks.php?competitie=<?php echo COM_SPORTA?>>Sporta</a>
-						<?php if (false && isset($_SESSION['user'])) { ?>
-							<li class="menuitem"><a href='http://www.tafeltennisactua.be/forum/viewforum.php?f=53' target='_blank'>Forum Erembodegem</a>
-						<?php } ?>
 						<li class="menuitem"><a href=fotos.php>Foto's</a>
 						<li class="menuitem"><a href=weetjes.php>TT Weetjes</a>
 						<li class="menuitem"><a href=links.php>Links</a>
 						<li class="menuitem"><a href="mailto:<?php echo $params[PARAM_EMAIL]?>">Email</a>
-						<!--<li class="menuitem"><a href="admin/index.php">Admin</a>-->
+						<li class="menuitem"><a href="admin/index.php">Ledenzone</a>
 					</td>
 				</tr>
 			</table>
