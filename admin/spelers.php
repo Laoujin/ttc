@@ -19,39 +19,16 @@
 			$values .= ", VolgnummerVTTL=".(is_numeric($_POST['volgnummerVTTL'.$i]) ? $_POST['volgnummerVTTL'.$i] : "NULL").", IndexVTTL=".(is_numeric($_POST['indexVTTL'.$i]) ? $_POST['indexVTTL'.$i] : "NULL");
 			$values .= ", VolgnummerSporta=".(is_numeric($_POST['volgnummerSporta'.$i]) ? $_POST['volgnummerSporta'.$i] : "NULL").", IndexSporta=".(is_numeric($_POST['indexSporta'.$i]) ? $_POST['indexSporta'.$i] : "NULL");
 			$db->Query("UPDATE speler SET $values WHERE ID=".$_POST['id'.$i]);
-			$db->SetLastUpdate(SPELERS);
-			$msg = "Speler gegevens geupdate!";
 		}
+
+		$db->SetLastUpdate(SPELERS);
+		$msg = "Speler gegevens geupdate!";
 	}
-	else if (isset($_POST['spelersIndexButton']))
-	{
-		$competitie = "VTTL";
-		$spelers = $db->Query("SELECT s.ID, s.Klassement$competitie, s.Volgnummer$competitie, s.Index$competitie, k.Waarde$competitie
-							  FROM speler s
-							  JOIN klassement k ON s.Klassement$competitie=
-							  WHERE s.Gestopt IS NULL AND s.ClubId$competitie=".CLUB_ID."
-							  ORDER BY k.Waarde$competitie DESC, s.Naam");
-	}
-	
-	//$params = $db->GetParams(array(PARAM_STANDAARDUUR, PARAM_KAL_WEEKS_OLD, PARAM_KAL_WEEKS_NEW, PARAM_JAAR));
-	
-	/*$result = $db->Query("SELECT ID, Naam, NaamKort, Stijl, BesteSlag, Adres, Gemeente, Tel, GSM, Email, Gestopt, Toegang
-															 LinkKaartVTTL, KlassementVTTL, KlassementSporta, ComputerNummerVTTL, LidNummerVTTL, ClubIdVTTL,
-															 ClubdIdSporta, VolgnummerVTTL, IndexVTTL, ComputerNummerSporta, LidNummerSporta, VolgnummerSporta,
-															 IndexSporta, LinkKaartSporta
-												FROM speler ORDER BY Naam");*/
-	
-	
 	
 	include_once 'admin_start.php';
 ?>
 <script type="text/javascript">
 $(document).ready(function() {
-	$(".spelerEditeer").click(function() {
-		var spelerId = $(this).attr("spelerid");
-		alert("We editeren speler " + spelerId);
-	});
-	
 	<?php if (isset($_POST['spelerLijst']) && $_POST['spelerLijst'] != "Alle") { ?>
 	$("#guessIndexen").click(function() {
 		var aantalSpelers = parseInt($("#aantalSpelers").val(), 10);
@@ -73,24 +50,6 @@ $(document).ready(function() {
 </script>
 
 <h1>Admin - spelers</h1>
-<form method=post>
-<table width="100%" align=center class="maintable">
-	<input type=hidden name=spelerID id=spelerID>
-	<tr>
-		<th colspan=2>Speler opties</th>
-	</tr>
-	<tr>
-		<td>Index en waarde van de spelers updaten</td>
-		<td><input type=submit name=spelersIndexButton value='Herberekenen'></td>
-	</tr>
-	<tr>
-		<td colspan=2 align=center>
-			
-		</td>
-	</tr>
-</table>
-</form>
-
 <form method=post>
 <table width="100%" align=center class="maintable">
 	<tr>
@@ -164,11 +123,7 @@ while ($record = mysql_fetch_array($result))
 			."</td>";
 	echo "<td align=center><input type=text name=gestopt$i value='".$record['Gestopt']."' size=5></td>";
 	echo "<td align=center>".GetToegangCombo("toegang$i", $record['Toegang'])."</td>";
-	//if (!is_numeric($record['Gestopt']))
-	//	echo "<td><a href=spelers.php?actie=spelerWeg&id=".$record['ID']." class='spelerWeg'>Weg</a></td>";
-	//else
-	//	echo "<td><a href=spelers.php?actie=spelerTerug&id=id=".$record['ID']." class='spelerTerug'>Terug</a></td>";
-	echo "<td><a href=# spelerid=".$record['ID']." class='spelerEditeer'>Editeer</a></td>";
+	echo "<td><a href='speleredit.php?id=".$record['ID']."'>Editeer</a></td>";
 	echo "</tr>";
 }
 echo "<input type=hidden name=aantalSpelers id=aantalSpelers value=$i>";
@@ -206,7 +161,6 @@ echo "<input type=hidden name=aantalSpelers id=aantalSpelers value=$i>";
 		$v = "<select name=$name>";
 		$v .= "<option value=0".($current != CLUB_ID ? " selected" : "")."></option>";
 		$v .= "<option value=".CLUB_ID.($current == CLUB_ID ? " selected" : "").">Erembodegem</option>";
-		//if ($id == CLUB_ID) return "Ja";
 		$v .= "</select>";
 		return $v;
 	}

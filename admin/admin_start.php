@@ -1,5 +1,6 @@
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>TTC Erembodegem</title>
 <script language="javascript" type="text/javascript" src="../include/jquery.js"></script>
 <script language="javascript" type="text/javascript" src="../include/datetimepicker.js"></script>
@@ -25,7 +26,7 @@
 					<td nowrap>
 						<?php
 						echo "<a href=../kalender.php>Terug</a><br>";
-						if ($security->Kalender()) echo "<a href=kalender.php>Kalender nieuw</a><br>";
+						if ($security->Kalender()) echo "<a href=kalender.php>Kalender</a><br>";
 						if (false && $security->Kalender()) echo "<a href=kalenderedit.php>Kalender edit</a><br>";
 						if ($security->Spelers()) echo "<a href=spelers.php>Spelers</a><br>";
 						if ($security->Params()) echo "<a href=params.php>Parameters</a><br>";

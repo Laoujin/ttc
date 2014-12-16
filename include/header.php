@@ -108,8 +108,6 @@
 		function Verslag($verslagId = '')
 		{
 			if ($verslagId == '') return !(($this->level & TOEGANG_SPELER) == 0);
-			// BUG: $verslagId == $_SESSION['userid']) => That's obviously never going to work...
-			//return ((($this->level & TOEGANG_KAPITEIN) != 0 && $verslagId == $_SESSION['userid']) || (($this->level & TOEGANG_ADMIN) != 0));
 			return (($this->level & TOEGANG_KAPITEIN) != 0 || ($this->level & TOEGANG_ADMIN) != 0);
 		}
 		
@@ -125,5 +123,4 @@
 	}
 	
 	$security = new SecurityManager(isset($_SESSION['useraccess']) ? $_SESSION['useraccess'] : 0);
-	//echo "security: ".$_SESSION['useraccess'];
 ?>

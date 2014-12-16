@@ -1,8 +1,7 @@
 <?php
-define("DEBUG", true);
-define("ANNOYING_DEBUG", false);
+define("DEBUG", true); // false=provide .be credentials
+define("ANNOYING_DEBUG", false); // Print all SQL statements
 
-//http://api.frenoy.net/tabtapi-doc/index.html
 Class MySqlWrapper
 {
 	var $Connection;
@@ -14,34 +13,7 @@ Class MySqlWrapper
 	var $Spelers = Array();
 	
 	function MySqlWrapper()
-	{
-		/*
-		PhpMyAdmin:	https://dbadmin.one.com/
-		Gebruikersnaam:	ttc_erembodegem
-		Wachtwoord:	q2N4FQzT
-		
-		ftp.ttc-erembodegem.be
-		Gebruikersnaam:	ttc-erembodegem.be
-		Wachtwoord:	
-
-		IMAP server:	
-		imap.ttc-erembodegem.be
-		
-		POP3 server:	
-		pop.ttc-erembodegem.be
-		
-		SMTP server:	
-		send.one.com
-		
-		Webmail:	
-		https://www.one.com/
-		
-		CO.NR:
-		http://www.freedomain.co.nr/
-		ttc-erembodegem : axendo7
-		
-		*/
-		
+	{		
 		if (!DEBUG)
 		{
 			$this->Server = 'ttc-erembodegem.be.mysql';
@@ -55,6 +27,8 @@ Class MySqlWrapper
 
 		mysql_select_db($this->Database)
 		or $this->Error('Failed to select database: '.$this->Database);
+
+		mysql_set_charset("UTF8");
 	}
 
 	function Query($request, $update = "")
@@ -76,7 +50,7 @@ Class MySqlWrapper
 	
 	function Escape($str)
 	{
-		return addslashes($str);
+		return mysql_real_escape_string($str);
 	}
 	
 	function Html($to_change)
