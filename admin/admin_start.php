@@ -44,8 +44,8 @@ $(function() {
 						if ($security->Admin()) echo "<a href='sitemapgenerator.php'>Sitemap</a><br>";
 						if (isset($_SESSION['user']) && $_SESSION['user'] != "") 
 						{
-							/*echo "<a href='spelersexport.php' id='spelersexport'>Spelerslijst (Excel)</a><br>";
-							echo "<br>";*/
+							echo "<a href='spelersexport.php' id='spelersexport'>Spelerslijst (Excel)</a><br>";
+							echo "<br>";
 							echo "<a href=index.php?uitloggen=true>Uitloggen</a><br>";
 						}
 						?>
