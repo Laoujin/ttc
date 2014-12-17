@@ -114,8 +114,10 @@
 		
 		function Verslag($verslagId = '')
 		{
-			if ($verslagId == '') return !(($this->level & TOEGANG_SPELER) == 0);
-			return (($this->level & TOEGANG_KAPITEIN) != 0 || ($this->level & TOEGANG_ADMIN) != 0);
+			return !(($this->level & TOEGANG_SPELER) == 0);
+
+			//if ($verslagId == '') return !(($this->level & TOEGANG_SPELER) == 0);
+			//return (($this->level & TOEGANG_KAPITEIN) != 0 || ($this->level & TOEGANG_ADMIN) != 0);
 		}
 		
 		function Any()
