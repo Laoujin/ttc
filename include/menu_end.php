@@ -17,5 +17,5 @@
 </script>
 </html>
 <?php
-	include_once 'include/footer.php';
+	include_once RELATIVE_PATH . 'include/footer.php';
 ?>
