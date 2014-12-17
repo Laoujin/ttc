@@ -18,6 +18,7 @@
 			$values .= ", Toegang=".$_POST['toegang'.$i];
 			$values .= ", VolgnummerVTTL=".(is_numeric($_POST['volgnummerVTTL'.$i]) ? $_POST['volgnummerVTTL'.$i] : "NULL").", IndexVTTL=".(is_numeric($_POST['indexVTTL'.$i]) ? $_POST['indexVTTL'.$i] : "NULL");
 			$values .= ", VolgnummerSporta=".(is_numeric($_POST['volgnummerSporta'.$i]) ? $_POST['volgnummerSporta'.$i] : "NULL").", IndexSporta=".(is_numeric($_POST['indexSporta'.$i]) ? $_POST['indexSporta'.$i] : "NULL");
+			$values .= ", KlassementVTTL='".$_POST['klassementVTTL'.$i]."', KlassementSporta='".$_POST['klassementSporta'.$i]."'";
 			$db->Query("UPDATE speler SET $values WHERE ID=".$_POST['id'.$i]);
 		}
 
@@ -29,7 +30,7 @@
 ?>
 <script type="text/javascript">
 $(document).ready(function() {
-	<?php if (isset($_POST['spelerLijst']) && $_POST['spelerLijst'] != "Alle") { ?>
+	<?php if (isset($_POST['spelerLijst']) && ($_POST['spelerLijst'] == "VTTL" || $_POST['spelerLijst'] == "Sporta")) { ?>
 	$("#guessIndexen").click(function() {
 		var aantalSpelers = parseInt($("#aantalSpelers").val(), 10);
 		var last = null, currentIndex = aantalSpelers;
@@ -46,6 +47,16 @@ $(document).ready(function() {
 		}
 	});
 	<?php } ?>
+
+	// Remove club = remove klassement, index etc
+	$("select[name*='clubId']").click(function() {
+		var self = $(this);
+		if (self.val() === "0") {
+			self.parent().find("input,select:last").each(function() {
+				$(this).val("");
+			});
+		}
+	});
 });
 </script>
 
@@ -59,14 +70,15 @@ $(document).ready(function() {
 	<tr>
 		<td colspan=3>
 			<select name=spelerLijst>
-				<option <?php echo (!isset($_POST['spelerLijst']) || $_POST['spelerLijst'] == "Alle" ? "selected" : "")?>>Alle</option>
+				<option <?php echo (!isset($_POST['spelerLijst']) || $_POST['spelerLijst'] == "Actieve" ? "selected" : "")?>>Actieve</option>
+				<option <?php echo (isset($_POST['spelerLijst']) && $_POST['spelerLijst'] == "Alle" ? "selected" : "")?>>Alle</option>
 				<option <?php echo (isset($_POST['spelerLijst']) && $_POST['spelerLijst'] == "VTTL" ? "selected" : "")?>>VTTL</option>
 				<option <?php echo (isset($_POST['spelerLijst']) && $_POST['spelerLijst'] == "Sporta" ? "selected" : "")?>>Sporta</option>
 			</select>
 			<input type=submit value="Lijst laden">
 		</td>
 		<td colspan=5>
-			<?php if (isset($_POST['spelerLijst']) && $_POST['spelerLijst'] != "Alle") { echo'<input type=button id=guessIndexen value="Volgnummer en index overschrijven">'; } ?>
+			<?php if (isset($_POST['spelerLijst']) && ($_POST['spelerLijst'] == "VTTL" || $_POST['spelerLijst'] == "Sporta")) { echo'<input type=button id=guessIndexen value="Volgnummer en index overschrijven">'; } ?>
 		</td>
 	</tr>
 	<tr>
@@ -82,9 +94,12 @@ $(document).ready(function() {
 $i = 0;
 $where = "";
 $extraOrder = "";
-if (!isset($_POST['spelerLijst'])) $_POST['spelerLijst'] = "";
+if (!isset($_POST['spelerLijst'])) $_POST['spelerLijst'] = "Actieve";
 switch ($_POST['spelerLijst'])
 {
+	case "Actieve":
+		$where = "WHERE Gestopt IS NULL";
+		break;
 	case "VTTL":
 		$where = "WHERE Gestopt IS NULL AND ClubIdVTTL IS NOT NULL";
 		$extraOrder = ", kVTTL.WaardeVTTL DESC";
