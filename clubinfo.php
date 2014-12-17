@@ -48,7 +48,7 @@
 	</tr>
 	<?php
 	$bestuursledenShown = false;
-	$result = $db->Query("SELECT SpelerID, Omschrijving, s.Naam, Adres, Gemeente, Tel, GSM, Email FROM clubcontact cc JOIN speler s ON cc.SpelerID=s.ID ORDER BY Sortering");
+	$result = $db->Query("SELECT SpelerID, Omschrijving, s.Naam, Adres, Gemeente, GSM, Email FROM clubcontact cc JOIN speler s ON cc.SpelerID=s.ID ORDER BY Sortering");
 	while ($record = mysql_fetch_array($result))
 	{
 		if ($record['Omschrijving'] != "") $desc = ucfirst($record['Omschrijving']);
@@ -70,8 +70,6 @@
 				<td width='99%' valign=top>
 					<b><a href=speler.php?id=<?php echo $record['SpelerID']?>><?php echo $record['Naam']?></a></b><br>
 					<?php
-						//echo $record['Adres']."<br>".$record['Gemeente']."<br>";
-						if ($record['Tel'] != "") echo "Tel.: ".$record['Tel']."<br>";
 						echo "GSM: ".$record['GSM']."<br>";
 						echo "Email: <a href=mailto:".$record['Email'].">".$record['Email']."</a>";
 					?>

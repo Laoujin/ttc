@@ -4,30 +4,13 @@
 	
 	$params = $db->GetParams(array(PARAM_EMAIL));
 	
-	function createRandomPassword()
-	{ 
-    $chars = "abcdefghijkmnopqrstuvwxyz023456789"; 
-    srand((double)microtime()*1000000); 
-    $i = 0; 
-    $pass = '' ; 
-
-    while ($i <= 7)
-    { 
-      $num = rand() % 33; 
-      $tmp = substr($chars, $num, 1); 
-      $pass = $pass . $tmp; 
-      $i++; 
-    } 
-    return $pass; 
-	}
-	
 	if (isset($_POST['buttonEmailPass']))
 	{
-		$result = $db->Query("SELECT Email, Naam FROM speler WHERE ID=".$_POST['emailLogin']." AND Email='".$db->Escape(trim($_POST['emailEmail']))."' AND Toegang<>0");
+		$result = $db->Query("SELECT Email, Naam FROM speler WHERE ID=".$_POST['emailLogin']." AND Email='".$db->Escape(trim($_POST['emailEmail']))."' AND Toegang<>0 AND Gestopt IS NULL");
 		if ($record = mysql_fetch_array($result))
 		{
 			$rndPwd = createRandomPassword();
-			$mail = "Je nieuw paswoord is: $rndPwd \nJe kan dit in het admin gedeelte van de site opnieuw aanpassen.";
+			$mail = "Je nieuw paswoord is: $rndPwd \nJe kan dit in de 'Ledenzone' op de site opnieuw aanpassen.";
 			mail($record['Email'], "Nieuw paswoord TTC Erembodegem", $mail, "From:".$params[PARAM_EMAIL]);
 			$db->Query("UPDATE speler SET Paswoord=MD5('".$rndPwd."') WHERE ID=".$_POST['emailLogin']);
 			$msg = "Nieuw paswoord is verstuurd!";

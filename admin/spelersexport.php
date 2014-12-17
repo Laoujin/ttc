@@ -48,7 +48,7 @@ $objPHPExcel->getActiveSheet()
 
 setHeader($objPHPExcel, 'A1:E1');
 
-$result = $db->Query("SELECT Naam, Adres, Gemeente, Tel, GSM, Email FROM speler s WHERE Gestopt IS NULL ORDER BY Naam");
+$result = $db->Query("SELECT Naam, Adres, Gemeente, GSM, Email FROM speler s WHERE Gestopt IS NULL ORDER BY Naam");
 $rowIndex = 1;
 while ($record = mysql_fetch_array($result))
 {

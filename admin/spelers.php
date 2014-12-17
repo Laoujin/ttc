@@ -50,6 +50,7 @@ $(document).ready(function() {
 </script>
 
 <h1>Admin - spelers</h1>
+<a href="spelernew.php">Nieuwe speler toevoegen</a>
 <form method=post>
 <table width="100%" align=center class="maintable">
 	<tr>

@@ -4,7 +4,7 @@
 	$params = $db->GetParams(array(PARAM_KAARTLINK_VTTL, PARAM_KAARTLINK_SPORTA, PARAM_JAAR, PARAM_EMAIL));
 
 	$result = $db->Query("SELECT s.ID, Naam, ClubIdVTTL, ClubIdSporta, LinkKaartVTTL, KlassementVTTL, LinkKaartSporta, KlassementSporta, Stijl, BesteSlag, ComputerNummerVTTL, LidNummerSporta, IndexVTTL, VolgnummerVTTL,
-												IndexSporta, VolgnummerSporta, Adres, Gemeente, Tel, GSM, Email, k.WaardeSporta
+												IndexSporta, VolgnummerSporta, Adres, Gemeente, GSM, Email, k.WaardeSporta
 												FROM speler s LEFT JOIN klassement k ON s.KlassementSporta=k.Code WHERE ID=".$_GET['id']);
 					
 	if ($record = mysql_fetch_array($result))
@@ -125,12 +125,6 @@
 					<td class=subheader>Adres:</td>
 					<td><?php echo $record['Adres']?><br><?php echo $record['Gemeente']?></td>
 				</tr>
-				<?php if (isset($record['Tel'])) { ?>
-				<tr>
-					<td class=subheader>Tel.:</td>
-					<td><?php echo $record['Tel']?></td>
-				</tr>
-				<?php } ?>
 				<tr>
 					<td class=subheader>GSM:</td>
 					<td><?php echo $record['GSM']?>&nbsp;</td>
