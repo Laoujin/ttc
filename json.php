@@ -12,11 +12,10 @@
 		//echo "Security:" . $security->Verslag($verslagId) . "/Kal:" . $kalenderId . '/Verslag:' . $verslagId;
 		if (is_numeric($kalenderId) && $security->Verslag($verslagId))
 		{
-			if (is_numeric($verslagId))
-			{
-				//echo "DELETE FROM verslag WHERE ID=$verslagId";
-				$db->Query("DELETE FROM verslagspeler WHERE VerslagID=$verslagId");
-				$db->Query("DELETE FROM verslag WHERE ID=$verslagId");
+			if (is_numeric($verslagId)) {
+				// Delete existing report(s)
+				$db->Query("DELETE FROM verslagspeler WHERE VerslagID=$verslagId"); // We may have dangling verslagspeler records here (but it's unlikely)
+				$db->Query("DELETE FROM verslag WHERE KalenderID=$kalenderId");
 			}
 			
 			$verslag = $db->Escape($_POST['editVerslag']);
