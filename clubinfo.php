@@ -2,6 +2,8 @@
 	define("PAGE_TITLE", "Clubinfo");
 	define("PAGE_DESCRIPTION", "Ligging van de club en contacteren van het clubbestuur.");
 	include_once 'include/menu_start.php';
+
+	$clubParams = $db->GetParams(array("CLUBINFO_TRAINING", "CLUBINFO_COMPETITIE", "CLUBINFO_VOLWASSENEN", "CLUBINFO_MIN18JARIGE"));
 ?>
 <h1>Clubinfo</h1>
 
@@ -29,14 +31,14 @@
 			?>
 		</td>
 		<td valign=top align=center>
-			Dinsdag en donderdag vanaf 20u
+			<?=$clubParams["CLUBINFO_TRAINING"]?>
 		</td>
 		<td valign=top align=center>
-			Maandag, woensdag en vrijdag om 20u
+			<?=$clubParams["CLUBINFO_COMPETITIE"]?>
 		</td>
 		<td align=center>
-			&euro;90 voor volwassenen<br>
-			&euro;50 voor -18 jarigen
+			<?=$clubParams["CLUBINFO_VOLWASSENEN"]?><br>
+			<?=$clubParams["CLUBINFO_MIN18JARIGE"]?>
 		</td>
 	</tr>
 </table>
