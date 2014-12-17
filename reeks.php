@@ -3,7 +3,10 @@
 		header("Location: kalender.php");
 	
 	include_once 'include/menu_start_dev.php';
-	$params = $db->GetParams(array(PARAM_JAAR, PARAM_STANDAARDUUR, PARAM_RESLINK_VTTL, PARAM_RANGLINK_VTTL, PARAM_RESLINK_SPORTA, PARAM_RANGLINK_SPORTA, PARAM_EMAIL));
+	include_once 'TabTAPI/TabTAPI.php';
+
+	$params = $db->GetParams(array(PARAM_JAAR, PARAM_STANDAARDUUR, PARAM_RESLINK_VTTL, PARAM_RANGLINK_VTTL, PARAM_RESLINK_SPORTA, PARAM_RANGLINK_SPORTA, PARAM_EMAIL, PARAM_FRENOY_URL_SPORTA, PARAM_FRENOY_URL_VTTL, PARAM_FRENOY_LOGIN, PARAM_FRENOY_PASSWORD));
+	$frenoyApi = new TabTAPI($params[PARAM_FRENOY_LOGIN], $params[PARAM_FRENOY_PASSWORD], $params[PARAM_JAAR], CLUB_CODE_VTTL, CLUB_CODE_SPORTA, $params[PARAM_FRENOY_URL_VTTL], $params[PARAM_FRENOY_URL_SPORTA]);
 
 	function PageHeader()
 	{
@@ -35,19 +38,59 @@
 			</tr>
 			<?php if ($reeksRecord['LinkID'] != "") { ?>
 			<tr>
-				<td><?php echo CreateIconLink(sprintf($params['linkRes'.$comp], substr($params[PARAM_JAAR], 2, 2)*1+1, $reeksRecord['LinkID']), 'Officiële site: resultaten <span class=help>(Externe link)</span>', 'statistieken.png' ,'', true)?></td>
+				<td><?php echo CreateIconLink(sprintf($params['linkRes'.$comp], substr($params[PARAM_JAAR], 2, 2)*1+1, $reeksRecord['LinkID']), 'OfficiÃ«le site: resultaten <span class=help>(Externe link)</span>', 'statistieken.png' ,'', true)?></td>
 			</tr>
 			<tr>
-				<td><?php echo CreateIconLink(sprintf($params['linkRang'.$comp], substr($params[PARAM_JAAR], 2, 2)*1+1, $reeksRecord['LinkID']), 'Officiële site: rangschikking <span class=help>(Externe link)</span>', 'statistieken.png' ,'', true)?></td>
+				<td><?php echo CreateIconLink(sprintf($params['linkRang'.$comp], substr($params[PARAM_JAAR], 2, 2)*1+1, $reeksRecord['LinkID']), 'OfficiÃ«le site: rangschikking <span class=help>(Externe link)</span>', 'statistieken.png' ,'', true)?></td>
 			</tr>
 			<?php } ?>
+			<?php
+				$frenoyApi->SetCompetition($comp);
+				$teamRanking = $frenoyApi->GetDivisionRanking($reeksRecord['LinkID']);
+				if ($frenoyApi->IsSuccess()) {
+				?>
+				<tr>
+					<td class='subheader'>Rangschikking</td>
+				</tr>
+				<tr><td>
+					<table width="100%" class="maintable">
+					<tr>
+						<th>Positie</th>
+						<th>Club</th>
+						<th>Gespeeld</th>
+						<th>Gewonnen</th>
+						<th>Verloren</th>
+						<th>Gelijk</th>
+						<th>Punten</th>
+					</tr>
+						<?php
+							foreach ($teamRanking as $key => $ranking) {
+								if ($ranking->TeamClub == $frenoyApi->GetCurrentClub()) {
+									echo "<tr class='rowselected'>";
+								} else {
+									echo "<tr>";
+								}
+								
+								echo "<td>" . $ranking->Position . "</td>";
+								echo "<td>" . $ranking->Team . "</td>";
+								echo "<td align='center'>" . $ranking->GamesPlayed . "</td>";
+								echo "<td align='center'>" . $ranking->GamesWon . "</td>";
+								echo "<td align='center'>" . $ranking->GamesLost . "</td>";
+								echo "<td align='center'>" . $ranking->GamesDraw . "</td>";
+								echo "<td align='center'>" . $ranking->Points . "</td>";
+								echo "</tr>";
+							}
+						?>
+					</table>
+				</td></tr>
+				<?php } ?>
 			<tr>
 				<td class=subheader>Kalender</td>
 			</tr>
 			<tr>
 				<td>
 					<?php
-					PrintKalender($db, "WHERE thuis.ID=".$clubploeg, $params[PARAM_STANDAARDUUR], false, 'reeks');
+					PrintKalender($db, $frenoyApi, "WHERE thuis.ID=".$clubploeg, $params[PARAM_STANDAARDUUR], false, 'reeks');
 					?>
 				</td>
 			</tr>
@@ -73,11 +116,11 @@
 			<?php if ($record['LinkID'] != "") { ?>
 			<tr>
 				<td class=subheader>Resultaten:</td>
-				<td><?php echo CreateIconLink(sprintf($params['linkRes'.$comp], substr($params[PARAM_JAAR], 2, 2)*1+1, $record['LinkID']), 'Officiële site: resultaten <span class=help>(Externe link)</span>', 'statistieken.png' ,'', true)?></td>
+				<td><?php echo CreateIconLink(sprintf($params['linkRes'.$comp], substr($params[PARAM_JAAR], 2, 2)*1+1, $record['LinkID']), 'OfficiÃ«le site: resultaten <span class=help>(Externe link)</span>', 'statistieken.png' ,'', true)?></td>
 			</tr>
 			<tr>
 				<td class=subheader>Rangschikking:</td>
-				<td><?php echo CreateIconLink(sprintf($params['linkRang'.$comp], substr($params[PARAM_JAAR], 2, 2)*1+1, $record['LinkID']), 'Officiële site: rangschikking <span class=help>(Externe link)</span>', 'statistieken.png' ,'', true)?></td>
+				<td><?php echo CreateIconLink(sprintf($params['linkRang'.$comp], substr($params[PARAM_JAAR], 2, 2)*1+1, $record['LinkID']), 'OfficiÃ«le site: rangschikking <span class=help>(Externe link)</span>', 'statistieken.png' ,'', true)?></td>
 			</tr>
 			<?php } ?>
 			<tr>
@@ -100,10 +143,10 @@
 					{
 						$mod++;
 						
-						$row1 .= "<td align=center>".$spelerRecord['Naam']." (".$spelerRecord['Klassement'.$comp].")</td>";
+						$row1 .= "<td align=center>".$db->Html($spelerRecord['Naam'])." (".$spelerRecord['Klassement'.$comp].")</td>";
 						$row2 .= "<td align=center>";
 						$row2 .= "<a href=speler.php?id=".$spelerRecord['SpelerID'].">";
-						$row2 .= GetImage($spelerRecord['SpelerID'], ($spelerRecord['Kapitein'] ? "Kapitein: " : "").$spelerRecord['Naam']." (".$spelerRecord['Klassement'.$comp].")");
+						$row2 .= GetImage($spelerRecord['SpelerID'], ($spelerRecord['Kapitein'] ? "Kapitein: " : "").$db->Html($spelerRecord['Naam'])." (".$spelerRecord['Klassement'.$comp].")");
 						$row2 .= "</a>";
 						$row2 .= "</td>";
 						

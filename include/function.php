@@ -99,7 +99,7 @@
 		return "<a".($blank ? ' target=_blank' : '')." href=".$a."><img src=img/".$icon." class=icon></a>" . "&nbsp;<a".($blank ? ' target=_blank' : '')." href=".$a.">".$text."</a>";
 	}
 	
-	function PrintKalender($db, $where, $stdUur, $weekSpacer, $context = 'main')
+	function PrintKalender($db, $frenoyApi, $where, $stdUur, $weekSpacer, $context = 'main')
 	{
 		global $security;
 		?>
@@ -173,7 +173,7 @@
 					<td><?php echo DisplayPloeg($record, $uit, $linkClass)?></td>
 					<td align='center'>
 						<?php
-						if (false) echo "ID=".$record['KalenderID']."//";
+						//if (false) echo "ID=".$record['KalenderID']."//";
 						if ($record['Vandaag'] <= 0)
 						{
 							echo "<label id=uitslag".$record['KalenderID'].">";
@@ -185,6 +185,10 @@
 							}
 							else
 							{
+								// TODO: Without the MatchId or MatchUniqueId this is not going to work :p
+								//$frenoyApi->SetCompetition($record['Competitie']);
+								//$frenoyApi->GetMatches($record['Week']);
+
 								echo "&nbsp;";
 							}
 							echo "</label>";

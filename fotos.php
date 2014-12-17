@@ -1,12 +1,12 @@
 <?php
 	define("PAGE_TITLE", "Foto albums");
-	define("PAGE_DESCRIPTION", "De officiële fotoalbums van TTC Erembodegem gerelateerde evenementen.");
+	define("PAGE_DESCRIPTION", "De officiÃ«le fotoalbums van TTC Erembodegem gerelateerde evenementen.");
 	include_once 'include/menu_start.php';
 ?>
 <h1>Foto's</h1>
 <table width='100%' class=maintable>
 	<tr>
-		<th>Officiële inhuldiging nieuwe zaal!</th>
+		<th>OfficiÃ«le inhuldiging nieuwe zaal!</th>
 	</tr>
 	<tr>
 		<td align="center">

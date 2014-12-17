@@ -206,7 +206,7 @@
     tafel passeert waardoor je met optimale controle jouw eigen slag kunt uitvoeren&nbsp; </p>
     <p>C) Doordat het contactpunt van de bal
     relatief diep is (t.o.v. een korte service) beperk je de mogelijkheid van je tegenstander
-    om een grote hoek te creëren. Hierdoor wordt je dus minder snel gedwongen om veel te
+    om een grote hoek te creÃ«ren. Hierdoor wordt je dus minder snel gedwongen om veel te
     bewegen en ben je beter in staat om de volgende bal te slaan.</p>
     <p>D) De afstand zorgt er ook voor dat iedere
     fout die je tegenstander maakt bij het beoordelen van de spin die je hebt meegegeven aan
@@ -216,7 +216,7 @@
     <p><b>Een diepe service:</b> </p>
     <p>Dit zijn services waarbij de eerste stuit
     diep op de tafelhelft van de tegenstander land en de bal erna de tafel verlaat. Voordeel
-    van deze servicevariant is vaak het verrassingselement. Door sterk te variëren met de
+    van deze servicevariant is vaak het verrassingselement. Door sterk te variÃ«ren met de
     richting waarin je deze service speelt en hem af te wisselen met een kortere variant kun
     je vaak sneller tot een open spel komen en zorgt de snelheid van de service er voor dat je
     direct druk kunt zetten. </p>
@@ -325,28 +325,28 @@
     class="postbody">zoals je hieronder kan lezen zijn er verschillende punten die je samen
     moet bekijken </span></span></p>
     <blockquote>
-      <p><span class="postbody"><span class="postbody"><strong>1</strong>°
+      <p><span class="postbody"><span class="postbody"><strong>1</strong>Â°
       Bij een keiharde afmaakslag kan de bal een snelheid van 250 km/u bereiken (das dus bij
       Louis :)) . Bij het duwen komt men slechts tot&nbsp;&nbsp; 25km/u&nbsp; (das dus bij Gerdo
       :))<br>
-      <strong>2</strong>° Als de bal de bat raakt is deze slechts 1/1000 van een seconde in
+      <strong>2</strong>Â° Als de bal de bat raakt is deze slechts 1/1000 van een seconde in
       contact . <br>
-      <strong>3</strong>° Dat bij de topspinslag de bal per seconde 50 maal om zijn as draait,
+      <strong>3</strong>Â° Dat bij de topspinslag de bal per seconde 50 maal om zijn as draait,
       dit zijn 3000 rotaties per minuut . (das bij Jurgen :))<br>
-      <strong>4</strong>° Dat bij een afmaakslag de bal een druk van 1 ton moet verdragen . <br>
-      <strong>5</strong>° Dat een oranje bal meer stimulerend is en minder vermoeiend is dan de
+      <strong>4</strong>Â° Dat bij een afmaakslag de bal een druk van 1 ton moet verdragen . <br>
+      <strong>5</strong>Â° Dat een oranje bal meer stimulerend is en minder vermoeiend is dan de
       witte bal . <br>
-      <strong>6</strong>° De hoogste snelheid van de arm bij een afmaakslag 35 &#150; 40 km/u
+      <strong>6</strong>Â° De hoogste snelheid van de arm bij een afmaakslag 35 &#150; 40 km/u
       kan bedragen </span></span><br>
-      <span class="postbody"><strong>7</strong>° bij
+      <span class="postbody"><strong>7</strong>Â° bij
       badminton en squash remt de bal hard af, enkel bij het vertrek zullen dergelijke snelheden
       behaald worden</span><br>
-      <span class="postbody"><strong>8</strong>° Het
+      <span class="postbody"><strong>8</strong>Â° Het
       gaat, als je over de snelheid van een sport spreekt, om de tijd die een sporter krijgt om
       te reageren. Stel een voetballer neemt een strafschop. Bij een snelheid van 90km/uur zal
       de bal in 0,45 seconden de hoek bereiken. Bij tafeltennis heb je, omdat de tafel zo klein
       is, slechts 0,025 tot 0,040 seconden de tijd om de bal te raken. </span><br>
-      <span class="postbody"><strong>9</strong>° In
+      <span class="postbody"><strong>9</strong>Â° In
       de tijd die een honkbalpitcher nodig heeft om de bal over de thuisplaat te werpen, is het
       tafeltennisballetje in een topwedstrijd 4 keer over het netje gegaan. Het balletje heeft
       niet alleen veel snelheid, het draait door het effect ook zeer snel om zijn as. Er is ooit
@@ -467,14 +467,14 @@
     <p>De ontstaansgeschiedenis van Tafeltennis is
     alleen te zien in samenhang met andere takken van sport, vooral tennis. Net als bij vele
     sporten, begon tafeltennis als een sociaal verzetje; het was vermoedelijk voor het eerst
-    gespeeld - met geïmproviseerd materiaal - in Engeland, ergens in het einde van de 19e
+    gespeeld - met geÃ¯mproviseerd materiaal - in Engeland, ergens in het einde van de 19e
     eeuw. Tafeltennis is, net als badminton en het huidige tennis, afkomstig van het
     middeleeuwse tennis.<br>
     </p>
     <p>Tafeltennis was al populair in de vorige
     eeuw. In Engeland werd in 1884 octrooi verleend op de naam
     &quot;Miniature-Indoor-Tennis-Game&quot;. Dit spel werd gespeeld met een kleine gummibal
-    (met lucht gevuld). Het spel was ook al vroeg geïntroduceerd in de Verenigde Staten en
+    (met lucht gevuld). Het spel was ook al vroeg geÃ¯ntroduceerd in de Verenigde Staten en
     het is mogelijk dat het eerste materiaal al in 1887 vervaardigd werd. In 1890 werd de
     celluloid-bal 'uitgevonden' door de Engelse ingenieur James Gibb.<br>
     </p>
@@ -484,9 +484,9 @@
     en &quot;Whiff-Whaff&quot; (Amerika).<br>
     </p>
     <p>Aanvankelijk werd het spel in speciale clubs
-    en cafés gespeeld. In 1899 werd in Berlijn de &quot;1e Berliner Tennis und Ping-Pong
+    en cafÃ©s gespeeld. In 1899 werd in Berlijn de &quot;1e Berliner Tennis und Ping-Pong
     Gesellschaft&quot; opgericht. Er werden zelf al snel 'ping-pong'-liedjes en -kleding
-    geïntroduceerd. Het spel bleef echter voorbehouden aan de hogere kringen.<br>
+    geÃ¯ntroduceerd. Het spel bleef echter voorbehouden aan de hogere kringen.<br>
     </p>
     <p><img src="img/weetjes/oudepalet.jpg" ALIGN="right" ALT="palet" width="166" height="321"> </p>
     <h4>Ping-Pong</h4>
@@ -518,7 +518,7 @@
     en tactieken.<br>
     </p>
     <p>Het was populair in Midden-Europa tussen 1905
-    en 1910, maar reeds daarvoor was een aangepast versie al geïntroduceerd in Japan, waarvan
+    en 1910, maar reeds daarvoor was een aangepast versie al geÃ¯ntroduceerd in Japan, waarvan
     het later verspreidde naar China en Korea.<br>
     </p>
     <p>In West-Europa en Amerika kwam er een korte
@@ -543,7 +543,7 @@
     </p>
     <p>Sommige veranderingen - een verlaging van het
     net, een tijdsregel tegen onaantrekkelijke wedstrijden tussen verdedigende spelers en
-    regels ter voorkoming van extra voordeel voor de serveerder - werden geïntroduceerd in de
+    regels ter voorkoming van extra voordeel voor de serveerder - werden geÃ¯ntroduceerd in de
     jaren na 1930.<br>
     </p>
     <p>In het seizoen 1931/1932 bepaalde de ITTF,
@@ -571,7 +571,7 @@
     voor een soort katapult-effect, waardoor er enorme snelheden aan de bal werden gegeven. In
     defensief opzicht hoefde men alleen de bal tegen te houden, zo groot was de veerkracht.
     Deze revolutie noopte de Oostenrijkse bond tot het voorstel om twee internationale
-    federaties op te richtten, één voor sponsspelers en één voor de rest. Pas in 1958
+    federaties op te richtten, Ã©Ã©n voor sponsspelers en Ã©Ã©n voor de rest. Pas in 1958
     besloot de NTTB het sponsrubber te verbieden. In 1959 volgde de ITTF het besluit van veel
     nationale bonden.<br>
     </p>
@@ -585,7 +585,7 @@
     </p>
     <p>In 1971 was de USA-tafeltennis-delegatie naar
     China voorpaginanieuws onder de kop &quot;Ping-pong diplomatie&quot;. Het uitstapje
-    creëerde niet alleen grotere bewustwording voor de sport maar plaveide ook de weg voor
+    creÃ«erde niet alleen grotere bewustwording voor de sport maar plaveide ook de weg voor
     betere diplomatieke verhoudingen tussen de Verenigde Staten en China.<br>
     </p>
     <p>Gedurende de jaren na 1960, ontwikkelde
@@ -597,7 +597,7 @@
     </p>
     <p>Vanaf 1960 begon China de Wereld
     Kampioenschappen te domineren. Dit duurde tot 1980, toen tafeltennis in de Olympische
-    Spelen werd geïntroduceerd. Vandaag de dag zijn Europeanen de hoogst gerangschikte
+    Spelen werd geÃ¯ntroduceerd. Vandaag de dag zijn Europeanen de hoogst gerangschikte
     spelers bij de mannen; bij de vrouwen domineren de Aziatische landen.<strong><br>
     </strong></p>
     <p><a href="#onderwerpen">Terug naar onderwerpen : klik hier</a></p>

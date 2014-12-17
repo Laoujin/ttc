@@ -7,19 +7,32 @@ include_once 'TabTAPI.php';
 
 $params = $db->GetParams(array(PARAM_FRENOY_URL_SPORTA, PARAM_FRENOY_URL_VTTL, PARAM_FRENOY_LOGIN, PARAM_FRENOY_PASSWORD, PARAM_JAAR, PARAM_EMAIL));
 
-$api = new TabTAPI($params[PARAM_FRENOY_LOGIN], $params[PARAM_FRENOY_PASSWORD], $params[PARAM_FRENOY_URL_SPORTA]);
+$api = new TabTAPI($params[PARAM_FRENOY_LOGIN], $params[PARAM_FRENOY_PASSWORD], $params[PARAM_JAAR], CLUB_CODE_VTTL, CLUB_CODE_SPORTA, $params[PARAM_FRENOY_URL_VTTL], $params[PARAM_FRENOY_URL_SPORTA]);
+
+$response = "";
 
 //$response = $api->Test();
 
-$api->SetCurrentSeason($params[PARAM_JAAR]);
+//$api->SetCurrentSeason($params[PARAM_JAAR]);
 
 //$response = $api->GetClubs(CLUB_CODE_VTTL);
 //$api->SetClubCategory("Oost-Vlaanderen");
-$api->SetClub(CLUB_CODE_SPORTA);
+//$api->SetVTTLClub(CLUB_CODE_VTTL);
+
+// score walk over = [Score] => 16-0 ff
 
 //$response = $api->GetClubs();
 
-$response = $api->GetMatches(9);
+//$api->SetSportaClub(CLUB_CODE_SPORTA);
+//$api->SetVTTLClub(CLUB_CODE_VTTL);
+//$response = $api->SetCurrentSeason(2013);
+
+
+
+//$api->SetCompetition("Sporta");
+//$response = $api->GetMatches();
+
+$response = $api->GetDivisionRanking("1668_A")->RankingEntries;
 
 
 
