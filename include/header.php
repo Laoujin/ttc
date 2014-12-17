@@ -2,6 +2,9 @@
 	session_start();
 
 	define("CLUB_ID", 1);
+	define("CLUB_CODE_VTTL", "OVL134");
+	define("CLUB_CODE_SPORTA", "4055");
+
 	define("PARAM_LASTUPDATE", "updated");
 	define("PARAM_STANDAARDUUR", "stduur");
 	define("PARAM_KAL_WEEKS_OLD", "kalold");
@@ -14,6 +17,10 @@
 	define("PARAM_RANGLINK_VTTL", "linkRangVTTL");
 	define("PARAM_RESLINK_SPORTA", "linkResSporta");
 	define("PARAM_RANGLINK_SPORTA", "linkRangSporta");
+	define("PARAM_FRENOY_URL_SPORTA", "frenoy_wsdlUrlSporta");
+	define("PARAM_FRENOY_URL_VTTL", "frenoy_wsdlUrlVTTL");
+	define("PARAM_FRENOY_LOGIN", "frenoy_login");
+	define("PARAM_FRENOY_PASSWORD", "frenoy_password");
 	
 	define("TOEGANG_NONE", 0);
 	define("TOEGANG_SPELER", 1);
