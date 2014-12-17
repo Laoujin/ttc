@@ -8,9 +8,6 @@
 	
 	$params = $db->GetParams(array(PARAM_STANDAARDUUR, PARAM_KAL_WEEKS_OLD, PARAM_KAL_WEEKS_NEW, PARAM_JAAR));
 	
-	// links naar resultaten reeks werken niet meer!
-	// kalender: links -> reeks kalender heeft link naar dezelfde pagina -> link wegdoen
-	
 	$matchJaar = date("Y");
 	$matchMaand = date("m");
 	$reeksWizard = 0;
@@ -280,7 +277,7 @@ function ShiftFocus(moveTo, maxLength, maxValue, curValue)
 	<tr>
 		<td>Datum:</td>
 		<td>
-			<input type=text name=Datum size="15">
+			<input type=text name=Datum id="Datum" size="15">
 			<a href="javascript:NewCal('Datum','ddmmyyyy',false,24)">
 			<img src="../img/cal.gif" width="16" height="16" border="0" alt="Kies een datum"></a> (DD/MM/JJJJ) 
 			<input type=text name=Uur value='<?php echo $params[PARAM_STANDAARDUUR]?>' size="5">
