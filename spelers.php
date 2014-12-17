@@ -68,7 +68,7 @@
 	</tr>
 	<?php
 	$result = $db->Query("SELECT ID, Naam, LinkKaartVTTL, LinkKaartSporta, KlassementSporta, KlassementVTTL, Stijl, BesteSlag, ClubIdVTTL, ClubIdSporta, VolgnummerVTTL, IndexVTTL, VolgnummerSporta, IndexSporta, ComputerNummerVTTL
-						FROM speler WHERE (ClubIdVTTL=".CLUB_ID." OR ClubIdSporta=".CLUB_ID.") AND Gestopt IS NULL ORDER BY ClubIdVTTL DESC, VolgnummerVTTL");
+						FROM speler WHERE Gestopt IS NULL ORDER BY ClubIdVTTL DESC, VolgnummerVTTL");
 
 	while ($record = mysql_fetch_array($result))
 	{
@@ -102,7 +102,7 @@
 	<?php
 	$result = $db->Query("SELECT s.ID, Naam, LinkKaartVTTL, k.WaardeSporta, LinkKaartSporta, KlassementSporta, KlassementVTTL, Stijl, BesteSlag, ClubIdVTTL, ClubIdSporta, VolgnummerSporta, IndexSporta, VolgnummerSporta, IndexSporta, LidNummerSporta
 												FROM speler s LEFT JOIN klassement k ON s.KlassementSporta=k.Code
-												WHERE (ClubIdVTTL=".CLUB_ID." OR ClubIdSporta=".CLUB_ID.") AND Gestopt IS NULL ORDER BY ClubIdSporta DESC, VolgnummerSporta");
+												WHERE Gestopt IS NULL ORDER BY ClubIdSporta DESC, VolgnummerSporta");
 
 	while ($record = mysql_fetch_array($result))
 	{
@@ -134,7 +134,7 @@
 	</tr>
 	<?php
 	$result = $db->Query("SELECT ID, Naam, LinkKaartVTTL, LinkKaartSporta, KlassementSporta, KlassementVTTL, Stijl, BesteSlag, ClubIdVTTL, ClubIdSporta
-												FROM speler WHERE (ClubIdVTTL=".CLUB_ID." OR ClubIdSporta=".CLUB_ID.") AND Gestopt IS NULL ORDER BY Naam");
+												FROM speler WHERE Gestopt IS NULL ORDER BY Naam");
 
 	while ($record = mysql_fetch_array($result))
 	{
