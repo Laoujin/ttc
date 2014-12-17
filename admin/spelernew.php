@@ -12,11 +12,15 @@
 		{ 
 			$_POST[$key] = mysql_real_escape_string($value);
 		}
+
+		$LidNummerSporta = is_numeric($_POST['LidNummerSporta']) ? "'".$_POST['LidNummerSporta']."'" : "NULL";
+		$ComputerNummerVTTL = is_numeric($_POST['ComputerNummerVTTL']) ? ".".$_POST['ComputerNummerVTTL']."'" : "NULL";
+
 		$rndPwd = createRandomPassword();
 		$sql = "INSERT INTO speler (Naam, NaamKort, LinkKaartVTTL, Stijl, BesteSlag, ComputerNummerVTTL, Adres, Gemeente, GSM, Email, LidNummerSporta, LinkKaartSporta, Toegang, Paswoord) 
 				VALUES ('{$_POST['Naam']}', '{$_POST['NaamKort']}', '{$_POST['LinkKaartVTTL']}', '{$_POST['Stijl']}', '{$_POST['BesteSlag']}',
-				'{$_POST['ComputerNummerVTTL']}', '{$_POST['Adres']}', '{$_POST['Gemeente']}',  
-				'{$_POST['GSM']}', '{$_POST['Email']}', '{$_POST['LidNummerSporta']}', '{$_POST['LinkKaartSporta']}', ".TOEGANG_SPELER.", MD5('".$rndPwd."'))"; 
+				$ComputerNummerVTTL, '{$_POST['Adres']}', '{$_POST['Gemeente']}',  
+				'{$_POST['GSM']}', '{$_POST['Email']}', $LidNummerSporta, '{$_POST['LinkKaartSporta']}', ".TOEGANG_SPELER.", MD5('".$rndPwd."'))"; 
 		$db->Query($sql); 
 		$db->SetLastUpdate(SPELERS);
 

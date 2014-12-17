@@ -12,10 +12,14 @@
 		foreach($_POST AS $key => $value) 
 		{ 
 			$_POST[$key] = mysql_real_escape_string($value);
-		} 
+		}
+
+		$LidNummerSporta = is_numeric($_POST['LidNummerSporta']) ? "'".$_POST['LidNummerSporta']."'" : "NULL";
+		$ComputerNummerVTTL = is_numeric($_POST['ComputerNummerVTTL']) ? ".".$_POST['ComputerNummerVTTL']."'" : "NULL";
+
 		$sql = "UPDATE `speler` SET `LinkKaartVTTL`='{$_POST['LinkKaartVTTL']}' , `Stijl`='{$_POST['Stijl']}' , `BesteSlag`='{$_POST['BesteSlag']}' , 
-				`ComputerNummerVTTL`='{$_POST['ComputerNummerVTTL']}' , `Adres`='{$_POST['Adres']}' , `Gemeente`='{$_POST['Gemeente']}' , 
-				`GSM`='{$_POST['GSM']}' , `Email`='{$_POST['Email']}', `LidNummerSporta`='{$_POST['LidNummerSporta']}', 
+				`ComputerNummerVTTL`=$ComputerNummerVTTL, `Adres`='{$_POST['Adres']}' , `Gemeente`='{$_POST['Gemeente']}' , 
+				`GSM`='{$_POST['GSM']}' , `Email`='{$_POST['Email']}', `LidNummerSporta`=$LidNummerSporta, 
 				`LinkKaartSporta`='{$_POST['LinkKaartSporta']}' WHERE `id`='$id'"; 
 
 		$db->Query($sql); 
