@@ -91,7 +91,7 @@ class TabTAPI
 	{
 		$params = array(
 		  "Credentials" => $this->_credentials,
-		  "DivsionId" => null,
+		  "DivisionId" => null,
 		  "Club" => $this->_club,
 		  "Team" => null,
 		  "DivisionCategory" => null,
@@ -100,6 +100,11 @@ class TabTAPI
 		  "Level" => null,
 		  "ShowDivisionName" => "short" /* no, yes, short */
 		);
+		
+		echo "<pre>";
+		print_r($params);
+		echo "</pre>";
+		
 		return $this->soapCall("GetMatches", $params);
 	}
 
