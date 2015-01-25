@@ -2,19 +2,19 @@
 	include_once 'include.php';
 	define("KALENDER", "kalender");
 	include_once '../include/header.php';
-	
+
 	if (!$security->Kalender())
 		header('Location: index.php');
-	
+
 	$params = $db->GetParams(array(PARAM_STANDAARDUUR, PARAM_KAL_WEEKS_OLD, PARAM_KAL_WEEKS_NEW, PARAM_JAAR));
-	
+
 	$matchJaar = date("Y");
 	$matchMaand = date("m");
 	$reeksWizard = 0;
 	$reeksId = 0;
 	$reeksPloegId = 0;
 	$reeksPloegCode = "";
-	
+
 	if (isset($_POST['Gebeurtenis']))
 	{
 		if (!strlen($_POST['Beschrijving'])) $msg = "Geef een beschrijving!";
@@ -28,7 +28,7 @@
 				$fields .= ", ".$_POST['Week'];
 			}
 			$db->Query("INSERT INTO kalender ($fields) VALUES ($values)", KALENDER);
-			
+
 			$msg = "Geslaagd!";
 		}
 		$msg = "Toevoegen gebeurtenis: <br>" . $msg;
@@ -44,7 +44,7 @@
 			$values .= ", '".strtoupper($_POST['reeksCode'])."', ".$_POST['reeksJaar'].", '".$_POST['reeksLink']."'";
 			$db->Query("INSERT INTO reeks (Competitie, Reeks, ReeksType, ReeksCode, Jaar, LinkID) VALUES ($values)", KALENDER);
 			$reeksId = mysql_insert_id();
-			
+
 			// ploegen in de reeks toevoegen
 			//$ploegen = array();
 			$aantalPloegen = $_POST['reeksAantalPloegen'] * 1;
@@ -87,7 +87,7 @@
 					}
 				}
 			}
-				
+
 			// spelers toevoegen aan eigen ploeg
 			if ($reeksPloegId != 0)
 			{
@@ -98,7 +98,7 @@
 					$kapitein = $_POST['reeksKapitein'];
 					$db->Query("INSERT INTO clubploegspeler ($keys) VALUES ($reeksPloegId, ".$_POST['reeksKapitein'].", 1)");
 				}
-				
+
 				$aantalSpelers = $_POST['reeksAantalSpelers'] * 1;
 				for ($i = 1; $i <= $aantalSpelers; $i++)
 				{
@@ -108,11 +108,11 @@
 					}
 				}
 			}
-			
+
 			$reeksWizard = 1;
 			$msg = "Reeks met ploegen toegevoegd. Ga nu verder met het ingeven van de matchen.";
 		}
-		
+
 		$msg = "Reeks toevoegen: <br>" . $msg;
 	}
 	else if (isset($_POST['reeksMatchButton']))
@@ -137,11 +137,11 @@
 				$values .= ", ".CLUB_ID.", '".$_POST['reeksPloegCode']."', ".$_POST['reeksPloegId'];
 				$values .= ", ".$_POST['reeksTegenstanderClub'.$i].", '".$_POST['reeksTegenstanderCode'.$i];
 				$values .= "', ".$_POST['reeksTegenstander'.$i];
-				
+
 				$db->Query("INSERT INTO kalender ($keys) VALUES ($values)");
 			}
 		}
-		
+
 		$msg = "Matchen toegevoegd";
 	}
 	else if (isset($_POST['matchButton']))
@@ -153,12 +153,12 @@
 			$fields .= ", Week";
 			$values .= ", ".$_POST['matchWeek'];
 		}
-		
+
 		$fields .= ", ThuisClubID, ThuisPloeg, ThuisClubPloegID";
 		$result = $db->Query("SELECT ClubID, Code FROM clubploeg WHERE ID=".$_POST['matchPloegThuis']);
 		$record = mysql_fetch_array($result);
 		$values .= ", ".$record['ClubID'].", '".ucfirst($record['Code'])."', ".$_POST['matchPloegThuis'];
-		
+
 		$fields .= ", UitClubID";
 		$values .= ", ".$_POST['matchPloegTegen'];
 		if (strlen($_POST['matchPloegTegenCode']) > 0)
@@ -166,11 +166,11 @@
 			$fields .= ", UitPloeg";
 			$values .= ", '".$_POST['matchPloegTegenCode']."'";
 		}
-		
+
 		$db->Query("INSERT INTO kalender ($fields) VALUES ($values)", KALENDER);
 		$msg = "Match toegevoegd!";
 	}
-	
+
 	include_once 'admin_start.php';
 ?>
 <script type="text/javascript">
@@ -181,11 +181,11 @@ $(document).ready(function() {
 		$("#manueelToevoegen").hide();
 		$(".nieuwereeks").show();
 	});
-	
+
 	$("#reeksCompetitie").change(function() {
 		$("#reeksType").val($(this).val() == "VTTL" ? "Prov" : "Afd");
 	}).change();
-	
+
 	<?php
 	if (isset($_POST['reeksButton']) && !$reeksWizard)
 	{
@@ -270,7 +270,7 @@ function ShiftFocus(moveTo, maxLength, maxValue, curValue)
 	<tr>
 		<td colspan=2 align=center><input type=submit name=matchButton value='Toevoegen'></td>
 	</tr>
-	
+
 <tr>
 		<th colspan=2>Gebeurtenis toevoegen</th>
 	</tr>
@@ -279,7 +279,7 @@ function ShiftFocus(moveTo, maxLength, maxValue, curValue)
 		<td>
 			<input type=text name=Datum id="Datum" size="15">
 			<a href="javascript:NewCal('Datum','ddmmyyyy',false,24)">
-			<img src="../img/cal.gif" width="16" height="16" border="0" alt="Kies een datum"></a> (DD/MM/JJJJ) 
+			<img src="../img/cal.gif" width="16" height="16" border="0" alt="Kies een datum"></a> (DD/MM/JJJJ)
 			<input type=text name=Uur value='<?php echo $params[PARAM_STANDAARDUUR]?>' size="5">
 		</td>
 	</tr>
@@ -338,7 +338,7 @@ function ShiftFocus(moveTo, maxLength, maxValue, curValue)
 		<td>
 			<input type=text size=6 name="reeksLink"><br>
 			<span class='help'>
-				Dit is de link naar de officiële pagina's met de resultaten en rangschikking van onze ploegen. 
+				Dit is de link naar de officiÃ«le pagina's met de resultaten en rangschikking van onze ploegen.
 				In de URL is dit de code na "div_id=".<br>
 				vb Sporta: http://tafeltennis.sporcrea.be/competitie/index.php?menu=4&perteam=1&div_id=<b>333_A</b>
 			</span>
@@ -349,7 +349,7 @@ function ShiftFocus(moveTo, maxLength, maxValue, curValue)
 		<td>
 			<span class=help>
 			Help: Vink de clubs aan die een ploeg hebben in de nieuwe reeks.
-			Gebruik de textbox om aan te geven welke ploeg het precies is (A, B, ...). 
+			Gebruik de textbox om aan te geven welke ploeg het precies is (A, B, ...).
 			Gebruik de tweede (en derde) textbox indien er meerdere ploegen van dezelfde
 			club in de reeks spelen.
 			</span>
@@ -377,7 +377,7 @@ function ShiftFocus(moveTo, maxLength, maxValue, curValue)
 						$reeksPloeg0 = "";
 						$reeksPloeg1 = "";
 						$reeksPloeg2 = "";
-					}					
+					}
 					echo "<tr><td".($record['ID'] == CLUB_ID ? " class='rowselected'" : "").">";
 					echo "<input type=hidden name=reeksPloegID".$ploegIndex." value=".$record['ID'].">";
 					echo "<input type=checkbox name=reeksPloeg".$ploegIndex.(($record['ID'] == CLUB_ID || $reeksPloeg) ? " checked" : "").">";
@@ -451,10 +451,10 @@ function ShiftFocus(moveTo, maxLength, maxValue, curValue)
 					if ($record['Code'] != "") $row .= " ".$record['Code'];
 					$row .= "</td>";
 					$row .= "</tr>";
-					
+
 					return $row;
 				}
-				
+
 				$terugRonde = "";
 				$matchIndex = 0;
 				$result = $db->Query("SELECT cp.ID, c.Naam, cp.Code, cp.ClubID FROM clubploeg cp INNER JOIN club c ON cp.ClubID=c.ID WHERE ReeksId=$reeksId AND cp.ID<>".$reeksPloegId." ORDER BY c.Naam");

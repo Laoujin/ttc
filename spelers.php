@@ -2,7 +2,7 @@
 	define("LIJST_STD", 0);
 	define("LIJST_VTTL", 1);
 	define("LIJST_SPORTA", 2);
-	
+
 	define("LIJST_VTTL_DESC", "VTTL overzicht");
 	define("LIJST_SPORTA_DESC", "Sporta overzicht");
 
@@ -21,7 +21,7 @@
 
 	include_once 'include/menu_start.php';
 	$params = $db->GetParams(array(PARAM_KAARTLINK_VTTL, PARAM_KAARTLINK_SPORTA));
-	
+
 	function PrintCompetitie(& $record, $comp, $link)
 	{
 		if ($record['ClubId'.$comp] == '') echo "<td>&nbsp;</td>";
@@ -29,7 +29,7 @@
 		{
 			$klassement = $record['Klassement'.$comp];
 			if (strlen($klassement) == 1) $klassement .= "&nbsp; &nbsp;";
-			echo "<td align=center>".$klassement."&nbsp; <a href='".sprintf($link, $record['LinkKaart'.$comp])."' target=_blank><img src=img/linkkaart.png class=icon title='Officiële kaart' tag='Officiële kaart'></a></td>";
+			echo "<td align=center>".$klassement."&nbsp; <a href='".sprintf($link, $record['LinkKaart'.$comp])."' target=_blank><img src=img/linkkaart.png class=icon title='OfficiÃ«le kaart' tag='OfficiÃ«le kaart'></a></td>";
 		}
 	}
 ?>

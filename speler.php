@@ -6,7 +6,7 @@
 	$result = $db->Query("SELECT s.ID, Naam, ClubIdVTTL, ClubIdSporta, LinkKaartVTTL, KlassementVTTL, LinkKaartSporta, KlassementSporta, Stijl, BesteSlag, ComputerNummerVTTL, LidNummerSporta, IndexVTTL, VolgnummerVTTL,
 												IndexSporta, VolgnummerSporta, Adres, Gemeente, GSM, Email, k.WaardeSporta
 												FROM speler s LEFT JOIN klassement k ON s.KlassementSporta=k.Code WHERE ID=".$_GET['id']);
-					
+
 	if ($record = mysql_fetch_array($result))
 	{
 		define("PAGE_TITLE", $record['Naam']);
@@ -43,7 +43,7 @@
 								</tr>
 								<tr>
 									<td class=subheader>Klassement:</td>
-									<td><?php echo $record['KlassementVTTL']." &nbsp;<a href=".sprintf($params[PARAM_KAARTLINK_VTTL], $record['LinkKaartVTTL'])." target='_Blank'><img src=img/linkkaart.png class=icon title='Officiële kaart' tag='Officiële kaart'></a>"?></td>
+									<td><?php echo $record['KlassementVTTL']." &nbsp;<a href=".sprintf($params[PARAM_KAARTLINK_VTTL], $record['LinkKaartVTTL'])." target='_Blank'><img src=img/linkkaart.png class=icon title='OfficiÃ«le kaart' tag='OfficiÃ«le kaart'></a>"?></td>
 								<tr>
 								<tr>
 									<td class=subheader>Volgnummer:</td>
@@ -80,7 +80,7 @@
 								<tr>
 									<td class=subheader>Klassement:</td>
 									<td>
-										<?php echo $record['KlassementSporta']." &nbsp;<a href=".sprintf($params[PARAM_KAARTLINK_SPORTA], $record['LinkKaartSporta'])." target='_Blank'><img src=img/linkkaart.png class=icon title='Officiële kaart' tag='Officiële kaart'></a>"?>
+										<?php echo $record['KlassementSporta']." &nbsp;<a href=".sprintf($params[PARAM_KAARTLINK_SPORTA], $record['LinkKaartSporta'])." target='_Blank'><img src=img/linkkaart.png class=icon title='OfficiÃ«le kaart' tag='OfficiÃ«le kaart'></a>"?>
 										&nbsp; (Waarde: <?php echo $record['WaardeSporta']?>)
 									</td>
 								<tr>

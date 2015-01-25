@@ -55,7 +55,7 @@ $(document).ready(function()
 		{
 			$("#imgTable img").css("border", "1px solid white");
 			$("img", this).css("border", "1px dashed yellow");
-			
+
 			var image = $("img", this).attr('src');
 			image = image.substr(11);
 			$("#popupImg").attr('src', 'images/'+image).load(
@@ -66,7 +66,7 @@ $(document).ready(function()
 
 			return false;
 		});
-		
+
 	$(".popupClose,#popupImg").click(function() {$("#popup").hide();});
 });
 </script>
@@ -76,12 +76,12 @@ $(document).ready(function()
   <tr>
     <td width="100%" align="center">
 			<a href='../index.php' title='Terug naar de site'><img border="0" src="../img/layout/banner.jpg" width="975" height="77"></a>
-			<h1>Officiële inhuldiging nieuwe zaal</h1>
+			<h1>OfficiÃ«le inhuldiging nieuwe zaal</h1>
 			<font size=-1>Album: 29/10/2011 (Door Marleen De Spiegeleer)</font>
 		</td>
   </tr>
 	<tr>
-		<td>	
+		<td>
 			<TABLE cellspacing=10 cellpadding=0 border=0 align=center id=imgTable>
 			<TR>
 					<TD align="center">	<A href='#' onclick='return false;'><IMG src="thumbnails/DSC_0235.jpg" height="67" width="100" border=0 title=""></A>	</TD>
