@@ -2,20 +2,20 @@
 	function VBCode($bbcode)
 	{
 		return str_replace("\n", "<br>", str_replace("\r\n", "<br>", str_replace('"', '\\"', $bbcode)));
-	
+
 	  //$bbcode = eregi_replace("\\[b\\]", quotemeta("<b>"), $bbcode);
 	  //$bbcode = eregi_replace("\\[u\\]", quotemeta("<u>"), $bbcode);
 	  //$bbcode = eregi_replace("\\[i\\]", quotemeta("<i>"), $bbcode);
-	  //$bbcode = eregi_replace("\\[/b\\]", quotemeta("</b>"), $bbcode);	  
+	  //$bbcode = eregi_replace("\\[/b\\]", quotemeta("</b>"), $bbcode);
 	  //$bbcode = eregi_replace("\\[/u\\]", quotemeta("</u>"), $bbcode);
       //$bbcode = eregi_replace("\\[/i\\]", quotemeta("</i>"), $bbcode);
-	
+
 	  // do [url]xxx[/url]
 	  //$bbcode = eregi_replace(quotemeta("[url=")."([^\\[]*)".quotemeta("]")."([^\\[]*)".quotemeta("[/url]"), quotemeta("<a target=\"_blank\" class=\"inpost_link\" href=\"")."\\1".quotemeta("\">")."\\2".quotemeta("</a>"), $bbcode);
 
 	  // do [email]xxx[/email]
 	  //$bbcode = eregi_replace("\\[email\\]([^\\[]*)\\[/email\\]", "<a class=\"inpost_link\" href=\"mailto:\\1\">\\1</a>", $bbcode);
-	
+
 	  // do quotes
 	  //$bbcode = eregi_replace(quotemeta("[quote]"), quotemeta("<blockquote><smallfont>quote:</smallfont><hr>"), $bbcode);
 	  //$bbcode = eregi_replace(quotemeta("[/quote]"), quotemeta("<hr></blockquote>"), $bbcode);
@@ -33,7 +33,7 @@
 	  //return str_replace("\n", "<br>", str_replace("\r\n", "<br>", $bbcode));
 	  //return $bbcode;
 	}
-	
+
 	function DisplayDay($DayOfWeek)
 	{
 		switch ($DayOfWeek - 1)
@@ -54,38 +54,38 @@
 			return "Zondag";
 		}
 	}
-	
+
 	function DisplayReeks(& $record, $class = '', $icon = false)
 	{
 		$var = $record['Competitie'].' '.$record['Reeks'].' '.$record['ReeksType'].' '.$record['ReeksCode'];
 		if (isset($record['Jaar']) && $record['Jaar'] != date("Y")) $var = "Seizoen ".$record['Jaar']."-".($record['Jaar']*1 + 1).": $var";
 		if ($icon) $var = "<img src=img/kalender.bmp class=icon tag='Kalender' title='Kalender'></a> <a href=reeks.php?id=".$record['ReeksID'].($class != '' ? ' class='.$class : '').">".$var;
 		if (isset($record['ReeksID'])) $var = "<a href=reeks.php?id=".$record['ReeksID'].($class != '' ? ' class='.$class : '').">".$var."</a>";
-		
+
 		return $var;
 	}
-	
+
 	function DisplayPloeg(& $record, $locatie, $class = '')
 	{
 		if ($record[$locatie.'ClubPloegID'] == "")
 			return "<a href=ploeg.php?clubid=".$record[$locatie.'ClubID'].'>'.$record[$locatie.'Naam'].' '.$record[$locatie.'Ploeg'].'</a>';
-			
+
 		if ($locatie == "Thuis")
 			return "<a href=reeks.php?ploeg=".$record['ReeksID']."&comp=".$record['Competitie'].">".$record[$locatie.'Naam'].' '.$record[$locatie.'Ploeg'].'</a>';
 		else
 			return "<a href=ploeg.php?id=".$record[$locatie.'ClubPloegID']."&clubid=".$record[$locatie.'ClubID'].">".$record[$locatie.'Naam'].' '.$record[$locatie.'Ploeg'].'</a>';
 	}
-	
+
 	function nbsp($var)
 	{
 		return !strlen($var) ? "&nbsp;" : $var;
 	}
-	
+
 	function nvl($in, $rep = '')
 	{
 		return !strlen($in) ? $rep : $in;
 	}
-	
+
 	function GetImage($id, $tag)
 	{
 		$imgPath = "img/speler/".$id.".jpg";
@@ -93,12 +93,12 @@
 		else $imgPath .= " border=1";
 		return "<img src=$imgPath alt='$tag' title='$tag'>";
 	}
-	
+
 	function CreateIconLink($a, $text, $icon, $class = '', $blank = false)
 	{
 		return "<a".($blank ? ' target=_blank' : '')." href=".$a."><img src=img/".$icon." class=icon></a>" . "&nbsp;<a".($blank ? ' target=_blank' : '')." href=".$a.">".$text."</a>";
 	}
-	
+
 	function PrintKalender($db, $frenoyApi, $where, $stdUur, $weekSpacer, $context = 'main')
 	{
 		global $security;
@@ -120,7 +120,7 @@
 		$result = $db->Query(
 		 "SELECT Week, TIME_FORMAT(Uur, '%k:%i') AS Uur, DATE_FORMAT(Datum, '%d/%m/%Y') AS FDatum, kalender.Beschrijving, UitPloeg, DAYOFWEEK(Datum) AS Dag
 			, ThuisClubPloegID, clubthuis.Naam AS ThuisNaam, ThuisPloeg, Competitie, Reeks, ReeksType, ReeksCode, reeks.ID AS ReeksID
-			, UitClubPloegID, clubuit.Naam AS UitNaam, TO_DAYS(Datum)-TO_DAYS(NOW()) AS Vandaag, Thuis, WEEK(Datum) AS JaarWeek
+			, UitClubPloegID, clubuit.Naam AS UitNaam, TO_DAYS(Datum)-TO_DAYS(NOW()) AS Vandaag, Thuis, WEEK(Datum) AS JaarWeek, IsTraining
 			, v.ID AS VerslagID, v.UitslagThuis, v.UitslagUit, v.WO, v.Details AS HeeftVerslag, kalender.ID AS KalenderID, clubthuis.ID AS ThuisClubID, clubuit.ID AS UitClubID
 			FROM kalender
 			LEFT JOIN clubploeg thuis ON ThuisClubPloegID=thuis.ID
@@ -130,7 +130,7 @@
 			LEFT JOIN verslag v ON kalender.ID=v.KalenderID
 			$where
 			ORDER BY Datum, kalender.ID");
-	
+
 		$week = 0;
 		while ($record = mysql_fetch_array($result))
 		{
@@ -152,13 +152,13 @@
 				$thuis = "Uit";
 				$uit = "Thuis";
 			}
-			
+
 			if ($weekSpacer && $week != $record['JaarWeek'])
 			{
 				if ($week != 0) echo "<tr height='3'><td colspan='8' class='rowheader'></td></tr>";
 				$week = $record['JaarWeek'];
 			}
-			
+
 			?>
 			<tr<?php echo $class?>>
 				<td><?php echo $record['Week']?></td>
@@ -203,6 +203,13 @@
 						}
 						?>
 					</td>
+				<?php } else if ($record['IsTraining'] == 1 && $security->GeleideTraining()) { ?>
+					<td colspan="3"><?php echo $record['Beschrijving']?></td>
+					<?php
+						//$result = $db->Query("SELECT");
+					?>
+					<td align="center"><a href="#" class="geleidetraining" data-training-id="<?php echo $record['KalenderID'] ?>"><img src="img/verslag<?php echo ($record['HeeftVerslag'] == 1 ? "" : "add")?>.png" class="icon" title="Schrijf je in!"></a></td>
+
 				<?php } else { ?>
 					<td colspan=<?php echo ($context != 'reeks' ? 4 : 3)?>><?php echo $record['Beschrijving']?></td>
 				<?php } ?>

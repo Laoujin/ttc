@@ -20,8 +20,9 @@
 		if (!strlen($_POST['Beschrijving'])) $msg = "Geef een beschrijving!";
 		else
 		{
-			$fields = "datum, uur, beschrijving";
-			$values = "'".$db->ParseDate($_POST['Datum'])."', '".$_POST['Uur']."', '".$db->Escape($_POST['Beschrijving'])."'";
+			$fields = "datum, uur, beschrijving, istraining";
+			$is_training = $_POST['IsTraining'] == "1" ? 1 : 0;
+			$values = "'".$db->ParseDate($_POST['Datum'])."', '".$_POST['Uur']."', '".$db->Escape($_POST['Beschrijving'])."', ".$is_training;
 			if (strlen($_POST['Week']) > 0)
 			{
 				$keys .= ", Week";
@@ -290,6 +291,10 @@ function ShiftFocus(moveTo, maxLength, maxValue, curValue)
 	<tr>
 		<td>Beschrijving:</td>
 		<td><input type=text name=Beschrijving value="Training" size=75></td>
+	</tr>
+	<tr>
+		<td>Geleide training?</td>
+		<td><input type=checkbox name=IsTraining value="1"> <font size="-1">(Wanneer aangevinkt moeten ingelogde leden zich inschrijven)</font></td>
 	</tr>
 	<tr>
 		<td colspan=2 align=center><input type=submit name=Gebeurtenis value="Toevoegen"></td>

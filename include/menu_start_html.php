@@ -2,7 +2,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title><?php echo (defined("PAGE_TITLE") ? PAGE_TITLE . " - " : ""); ?>TTC Erembodegem</title>
+
 <script language="javascript" type="text/javascript" src="include/jquery.js"></script>
+<script language="javascript" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/jquery-ui.min.js"></script>
 <script language="javascript" type="text/javascript" src="include/jqueryext.js"></script>
 <script language="javascript" type="text/javascript" src="include/jquery.form.js"></script>
 <?php
@@ -42,7 +44,7 @@ include_once 'include/popup.php';
 					</td>
 				</tr>
 			</table>
-			
+
 			<div style="margin-top: 7px; left: 15px; position: absolute; background-color: white; border: 1px solid black">
 				<img src="img/sponsors/smaele_small.jpg" border="0" width="200" height="141" />
 			</div>

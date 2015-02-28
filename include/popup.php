@@ -86,7 +86,9 @@
 			</td>
 		</tr>
 		<tr>
-			<td colspan=3 align=center><input type=submit name=buttonVerslag id=buttonVerslag value='Opslaan'> &nbsp; <input type=button id=buttonAnnuleerVerslag value='Annuleren'></td>
+			<td colspan=3 align=center><input type=submit name=buttonVerslag id=buttonVerslag value='Opslaan'>
+			&nbsp;
+			<input type="button" id=buttonAnnuleerVerslag value='Annuleren'></td>
 		</tr>
 	</form>
 	</table>
@@ -99,22 +101,22 @@ var hasLoggedIn = false;
 
 function VerstuurVerslag()
 {
-	var options = { 
-        target:        '',   // target element(s) to be updated with server response 
-        beforeSubmit:  showRequest,  // pre-submit callback 
-        success:       showResponse  // post-submit callback 
-        //resetForm: 		 true // reset the form after successful submit 
- 
-        // other available options: 
-        //url:       url         // override for form's 'action' attribute 
-        //type:      type        // 'get' or 'post', override for form's 'method' attribute 
-        //dataType:  null        // 'xml', 'script', or 'json' (expected server response type) 
-        //clearForm: true        // clear all form fields after successful submit 
- 
-        // $.ajax options can be used here too, for example: 
-        //timeout:   3000 
+	var options = {
+        target:        '',   // target element(s) to be updated with server response
+        beforeSubmit:  showRequest,  // pre-submit callback
+        success:       showResponse  // post-submit callback
+        //resetForm: 		 true // reset the form after successful submit
+
+        // other available options:
+        //url:       url         // override for form's 'action' attribute
+        //type:      type        // 'get' or 'post', override for form's 'method' attribute
+        //dataType:  null        // 'xml', 'script', or 'json' (expected server response type)
+        //clearForm: true        // clear all form fields after successful submit
+
+        // $.ajax options can be used here too, for example:
+        //timeout:   3000
     };
- 
+
   // bind form using 'ajaxForm'
   $('#editPopup').ajaxForm(options);
 }
@@ -124,7 +126,7 @@ function showRequest(formData, jqForm, options)
 	//var queryString = $.param(formData);
 	//$("#editVerslag").val(queryString);
 	//$("#ajaxMessage").text("Opslaan verslag...");
-	
+
 	// minstens de uitslag moet ingegeven worden!
 	var form = jqForm[0];
 	if (!form.editThuisPunten.value.length && !form.editWO.checked && !form.editVerslag.value.length)
@@ -137,7 +139,7 @@ function showRequest(formData, jqForm, options)
 		alert("Inloggen is verplicht om een verslag in te geven!");
 		return false;
 	}
-	
+
   return true;
 }
 
@@ -148,8 +150,8 @@ function showResponse(responseText, statusText, xhr, $form)
 	{
 		$("#verslagEditPopup").show();
 		//alert(responseText);
-		
-		$('#ajaxMessage').hide().text(responseText).fadeIn('slow').delay(2000).fadeOut('slow'); 
+
+		$('#ajaxMessage').hide().text(responseText).fadeIn('slow').delay(2000).fadeOut('slow');
 	}
 	else
 	{
@@ -164,16 +166,16 @@ function ShowEditPopup(popup)
 {
 	var reeks = $("#popupReeks").val();
 	var maxPunten = reeks == '<?php echo VTTL?>' ? <?php echo MATCHEN_VTTL?> : <?php echo MATCHEN_SPORTA?>;
-	
+
 	var kalenderid = $('#popupID').val();
 	var verslagid = $('#popupVerslagID').val();
 	$('#editPopup').resetForm();
 	$('#popupID').val(kalenderid);
 	$('#popupVerslagID').val(verslagid);
-	
+
 	$("#popupPloegThuisNaamEdit").html($("#popupPloegThuisNaam").html());
 	$("#popupPloegUitNaamEdit").html($("#popupPloegUitNaam").html());
-	
+
 	var klassen = $("#editUitKlas1").add($("#editUitKlas2")).add($("#editUitKlas3")).add($("#editUitKlas4"));
 	if (reeks == '<?php echo VTTL?>')
 	{
@@ -190,7 +192,7 @@ function ShowEditPopup(popup)
 			});
 		}
 	}
-	
+
 	if (verslagData != null)
 	{
 		$('#editThuisPunten').val(verslagData.UitslagThuis);
@@ -198,7 +200,7 @@ function ShowEditPopup(popup)
 		$('#editVerslag').val(verslagData.Beschrijving.replace(/\<br\>/g, "\n"));
 		$("#editWO").attr('checked', verslagData.WO == 1);
 		EnablePuntenIngave(verslagData.WO == 1);
-		
+
 		/*var thuisSpelers = $("#editSpelerThuis");
 		var uitSpelers = $("#editSpelerUit");
 		if ($("#popupIsThuis").val() == "1")
@@ -211,7 +213,7 @@ function ShowEditPopup(popup)
 			$("#editSpelerThuisHolder").html(uitSpelers[0].outerHTML);
 			$("#editSpelerUitHolder").html(thuisSpelers[0].outerHTML);
 		}*/
-		
+
 		if (verslagData.ThuisObject != null)
 		{
 			$.each(verslagData.ThuisObject, function(i, speler) {
@@ -219,7 +221,7 @@ function ShowEditPopup(popup)
 				if (speler.ID != undefined) $("#editSpeler" + (i+1)).val(speler.ID);
 			});
 		}
-		
+
 		if (verslagData.UitObject != null)
 		{
 			$.each(verslagData.UitObject, function(i, speler) {
@@ -235,13 +237,13 @@ function ShowEditPopup(popup)
 		//$("#editWO").attr('checked', false);
 		EnablePuntenIngave(false);
 	}
-	
+
 	$('#ajaxMessage').text("");
 	if (!hasLoggedIn)
 		$("#editLoginRow").<?php echo ($security->Verslag() ? "hide" : "show"); ?>();
 	$("#editMaxPunten").val(maxPunten);
 	$("#popupReeks").val(reeks);
-	
+
 	FadeOut($("#verslagPopup"));
 	FadeIn(popup, true);
 }
@@ -275,14 +277,14 @@ function ShowPopup(link, popup) {
    responseCell = link.parent();
    var hiddenField = $("#popupID");
    var currentKalender = hiddenField.val();
-   
+
    hiddenField.val(kalender);
    $("#popupReeks").val(link.attr('reeks'));
    $("#popupIsThuis").val(link.attr('thuis'));
-   
+
    $('#popupPloegThuisNaam').text(responseCell.prev().prev().text());
    $('#popupPloegUitNaam').text(responseCell.prev().text());
-   
+
    $.getJSON("json.php", {id: kalender, type: 'verslag'}, function(data) {
 		verslagData = data;
 		$('#popupWedstrijdWO').html('&nbsp;');
@@ -291,7 +293,7 @@ function ShowPopup(link, popup) {
 			$('#popupPloegThuis').html('&nbsp;');
 				$('#popupPloegUit').html('&nbsp;');
 				$('#popupSpelers').hide();
-				
+
 				if (data != null)
 				{
 					$('#popupWedstrijdWO').html('WO');
@@ -303,7 +305,7 @@ function ShowPopup(link, popup) {
 					$('#popupVerslagID').val('');
 					$('#popupWedstrijdVerslag').html('&nbsp;');
 				}
-				
+
 				ShowEditPopup($("#verslagEditPopup"));
 				return;
 		}
@@ -313,7 +315,7 @@ function ShowPopup(link, popup) {
 				$('#popupPloegThuis').html(data.UitslagThuis);
 				$('#popupPloegUit').html(data.UitslagUit);
 				$('#popupWedstrijdVerslag').html(data.Beschrijving + "<br><br>Verslag door <b>" + verslagData.Naam + "</b>");
-			
+
 				if (data.Thuis.length > 0)
 				{
 					$('#popupSpelers').show();
@@ -333,11 +335,11 @@ function ShowPopup(link, popup) {
 					$('#popupSpelers').hide();
 				}
 		}
-		
+
 		popup.width($(window).width() / 2);
 		popup.height($(window).height() / 2);
 		popup.centerInClient();
-	   
+
 		$("#verslagEditPopup").hide();
 		if (currentKalender == kalender) Toggle(popup);
 		else FadeIn(popup);
@@ -353,7 +355,7 @@ function EnablePuntenIngave(isChecked)
 	else
 	{
 		$("#editThuisPunten").add($("#editUitPunten")).removeAttr('disabled');
-	}	
+	}
 }
 
 $(document).ready(function() {
@@ -361,25 +363,25 @@ $(document).ready(function() {
 		ShowPopup($(this), $("#verslagPopup"));
 		return false;
 	});
-	
+
 	VerstuurVerslag();
-	
+
 	$("#buttonAnnuleerVerslag").add($('#editCloseButton')).click(function() {
 		$("#verslagEditPopup").hide();
 	});
-	
+
 	$("#editWO").click(function() {
 		EnablePuntenIngave($(this).is(':checked'));
 	});
-	
+
 	$("#editThuisPunten").add($("#editUitPunten")).change(function() {
 		var maxPunten = $("#editMaxPunten").val() * 1;
 		if ($(this).val() == '' || $(this).val() * 1 < 0) $(this).val("0");
 		if ($(this).val() * 1 > maxPunten) $(this).val(maxPunten);
-		
+
 		$("#" + (this.id == 'editUitPunten' ? "editThuisPunten" : "editUitPunten")).val(maxPunten - $(this).val() * 1)[0].select();
 	});
-	
+
 	var andereKlassementBoxes = $("#editUitKlas2").add($("#editUitKlas1")).add($("#editUitKlas3")).add($("#editUitKlas4"));
 	$("#editUitKlas1 option").each(function(i, el) {
 		andereKlassementBoxes.append(el);
@@ -387,12 +389,12 @@ $(document).ready(function() {
 	andereKlassementBoxes.each(function(i, el) {
 		$(el).find("option:first").attr("selected", "selected");
 	});
-	
+
 	$("#verslagWijzigen").click(function() {
 		ShowEditPopup($("#verslagEditPopup"));
 		return false;
 	});
-	
+
 	$("#verslagPopup").click(function() {
 		$("#verslagPopup").hide();
 		$("#verslagEditPopup").hide();

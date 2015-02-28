@@ -4,34 +4,22 @@
 	include_once 'include/menu_start.php';
 	include_once 'TabTAPI/TabTAPI.php';
 ?>
+<script>
+$(function() {
+	$(".geleidetraining").click(function() {
+		var id = $(this).attr("data-training-id");
+		$('#geleidetraining').load('trainingpopup.php', {id: id, uren: [21, 22]}, function() {
+			var popup = $('#geleidetraining');
+			popup.width($(window).width() / 2);
+ 			popup.height($(window).height() / 2);
+ 			popup.centerInClient().show();
+		});
+		return false;
+	});
+});
+</script>
+<div id="geleidetraining"></div>
 <h1>Kalender</h1>
-<!--<table width="500" class="maintable">
-	<tr>
-		<th>Eetfestijn TTC Erembodegem</th>
-	</tr>
-	<tr>
-		<td>
-			Ons jaarlijks eefestijn gaat door op <b>zaterdag 24 september 2011</b> 
-			<br>Van <b>18u tot 22u30</b>
-			<br>In de parochiezaal, Termurenlaan 4, 9320 Erembodegem!<br>
-			
-			<br>
-			
-			<li>Tongrolletjes in mosterdsaus (€15)
-			<li>Varkenshaasje met sla en tomaten met saus naar keuze (€15)
-			<li>Kindermenu: Kip met appelmoes (€7.5)
-			
-			<br><br><div align=center><b>Kaarten verkrijgbaar bij de leden!</b></div>
-		</td>
-	</tr>
-	<tr>
-		<td align=center>
-		Ter sponsering van onze gloednieuwe zaal (met peperdure vloer)
-		zijn er eveneens steunkaarten van €3.
-		</td>
-	</tr>
-</table>
--->
 <?php
 	$params = $db->GetParams(array(PARAM_STANDAARDUUR, PARAM_KAL_WEEKS_OLD, PARAM_KAL_WEEKS_NEW, PARAM_FRENOY_URL_SPORTA, PARAM_FRENOY_URL_VTTL, PARAM_FRENOY_LOGIN, PARAM_FRENOY_PASSWORD, PARAM_JAAR));
 	$frenoyApi = new TabTAPI($params[PARAM_FRENOY_LOGIN], $params[PARAM_FRENOY_PASSWORD], $params[PARAM_JAAR], CLUB_CODE_VTTL, CLUB_CODE_SPORTA, $params[PARAM_FRENOY_URL_VTTL], $params[PARAM_FRENOY_URL_SPORTA]);
