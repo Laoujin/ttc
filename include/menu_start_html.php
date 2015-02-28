@@ -10,7 +10,7 @@
 <?php
 if (defined("PAGE_DESCRIPTION")) echo "<meta name='description' content='".PAGE_DESCRIPTION."' />";
 ?>
-<link href="layout.css" rel="stylesheet" type="text/css" />
+<link href="layout.css?2" rel="stylesheet" type="text/css" />
 <link rel="shortcut icon" href="img/favicon.png" />
 </head>
 <body>

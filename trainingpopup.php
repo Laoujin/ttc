@@ -53,6 +53,7 @@ if (is_numeric($_POST['id']) && $security->GeleideTraining())
 	<tr>
 		<td><?=$spelerNames[$i]?></td>
 	</tr>
+	<?php if ($plaatsenVrij[$i] > 0 || $reedsIngeschreven[$i]) { ?>
 	<tr>
 		<td align="center">
 			<input type="button"
@@ -61,6 +62,7 @@ if (is_numeric($_POST['id']) && $security->GeleideTraining())
 				value="<?=get_inschrijving_desc($uren[$i], $reedsIngeschreven[$i])?>">
 		</td>
 	</tr>
+	<?php } ?>
 	<?php } ?>
 </table>
 <script>
