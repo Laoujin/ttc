@@ -120,7 +120,7 @@
 		$result = $db->Query(
 		 "SELECT Week, TIME_FORMAT(Uur, '%k:%i') AS Uur, DATE_FORMAT(Datum, '%d/%m/%Y') AS FDatum, kalender.Beschrijving, UitPloeg, DAYOFWEEK(Datum) AS Dag
 			, ThuisClubPloegID, clubthuis.Naam AS ThuisNaam, ThuisPloeg, Competitie, Reeks, ReeksType, ReeksCode, reeks.ID AS ReeksID
-			, UitClubPloegID, clubuit.Naam AS UitNaam, TO_DAYS(Datum)-TO_DAYS(NOW()) AS Vandaag, Thuis, WEEK(Datum) AS JaarWeek, IsTraining
+			, UitClubPloegID, clubuit.Naam AS UitNaam, TO_DAYS(Datum)-TO_DAYS(NOW()) AS Vandaag, Thuis, WEEK(Datum) AS JaarWeek, GeleideTraining
 			, v.ID AS VerslagID, v.UitslagThuis, v.UitslagUit, v.WO, v.Details AS HeeftVerslag, kalender.ID AS KalenderID, clubthuis.ID AS ThuisClubID, clubuit.ID AS UitClubID
 			FROM kalender
 			LEFT JOIN clubploeg thuis ON ThuisClubPloegID=thuis.ID
@@ -203,12 +203,14 @@
 						}
 						?>
 					</td>
-				<?php } else if ($record['IsTraining'] == 1 && $security->GeleideTraining()) { ?>
-					<td colspan="3"><?php echo $record['Beschrijving']?></td>
-					<?php
-						//$result = $db->Query("SELECT");
-					?>
-					<td align="center"><a href="#" class="geleidetraining" data-training-id="<?php echo $record['KalenderID'] ?>"><img src="img/verslag<?php echo ($record['HeeftVerslag'] == 1 ? "" : "add")?>.png" class="icon" title="Schrijf je in!"></a></td>
+				<?php
+					} else if ($record['GeleideTraining'] && $security->GeleideTraining()) { ?>
+					<td colspan="3" style="background-color: #ffffff"><?=$record['Beschrijving']?></td>
+					<td align="center">
+						<a href="#" class="geleidetraining" data-training-id="<?=$record['KalenderID'] ?>">
+							<img src="img/verslag.png" class="icon" title="Schrijf je in!">
+						</a>
+					</td>
 
 				<?php } else { ?>
 					<td colspan=<?php echo ($context != 'reeks' ? 4 : 3)?>><?php echo $record['Beschrijving']?></td>

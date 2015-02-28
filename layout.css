@@ -186,6 +186,7 @@ a:hover
 .gtInschrijven
 {
 	font-size: 18px;
+	cursor: pointer;
 }
 
 .gtUitschrijven

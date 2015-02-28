@@ -7,8 +7,10 @@
 <script>
 $(function() {
 	$(".geleidetraining").click(function() {
-		var id = $(this).attr("data-training-id");
-		$('#geleidetraining').load('trainingpopup.php', {id: id, uren: [21, 22]}, function() {
+		var $this = $(this);
+		var id = $this.attr("data-training-id");
+
+		$('#geleidetraining').load('trainingpopup.php', {id: id}, function() {
 			var popup = $('#geleidetraining');
 			popup.width($(window).width() / 2);
  			popup.height($(window).height() / 2);

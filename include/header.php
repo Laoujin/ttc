@@ -21,6 +21,8 @@
 	define("PARAM_FRENOY_URL_VTTL", "frenoy_wsdlUrlVTTL");
 	define("PARAM_FRENOY_LOGIN", "frenoy_login");
 	define("PARAM_FRENOY_PASSWORD", "frenoy_password");
+	define('PARAM_TRAINING_PERSONEN', 'training_personen');
+	define('PARAM_TRAINING_KALENDER_DESC', 'training_kaldesc');
 
 	define("TOEGANG_NONE", 0);
 	define("TOEGANG_SPELER", 1);

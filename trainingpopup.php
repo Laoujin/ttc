@@ -8,18 +8,21 @@ if (is_numeric($_POST['id']) && $security->GeleideTraining())
 		return $reedsIngeschreven ? 'Ik kan toch niet meetrainen! :(' : 'Ik doe mee om '.$uur.'u!';
 	}
 
-	define('TRAINING_PERSONEN', 'training_personen');
-	$params = $db->GetParams(TRAINING_PERSONEN);
+	$params = $db->GetParams(PARAM_TRAINING_PERSONEN);
+
+	$kalenderItem = mysql_fetch_array($db->Query(
+		"SELECT DATE_FORMAT(Datum, '%d/%m/%Y') AS Datum, GeleideTraining, DAYOFWEEK(Datum) AS Dag
+		FROM kalender WHERE ID=".$_POST['id']));
+	$uren = explode(',', $kalenderItem['GeleideTraining']);
+	$uren = array($uren[0], $uren[1]);
+
 	$result = $db->Query(
 		 "SELECT NaamKort, SpelerId, Uur
 			FROM training t
 			JOIN speler s ON s.ID=t.SpelerId
 			WHERE KalenderId=" . $_POST['id']);
 
-	$uren = $_POST['uren'];
-	assert(is_array($uren));
-
-	$plaatsenVrij = array($params[TRAINING_PERSONEN], $params[TRAINING_PERSONEN]);
+	$plaatsenVrij = array($params[PARAM_TRAINING_PERSONEN], $params[PARAM_TRAINING_PERSONEN]);
 	$spelerNames = array('', '');
 	$reedsIngeschreven = array(0, 0);
 	while ($spelerRecord = mysql_fetch_array($result))
@@ -44,8 +47,9 @@ if (is_numeric($_POST['id']) && $security->GeleideTraining())
 ?>
 <div class='popupClose'><a href=#><img src=img/close.gif border=0></a></div>
 <table class="maintable" width="100%">
+	<tr><th>Geleide Training op <?=DisplayDay($kalenderItem['Dag'])." ".$kalenderItem['Datum']?></th></tr>
 	<?php for ($i = 0; $i < 2; $i++) { ?>
-	<tr><th>Geleide Training <?=$uren[$i].'u: '.$plaatsenVrij[$i]?> plaatsen vrij</th></tr>
+	<tr><th>Om <?=$uren[$i].'u: '.$plaatsenVrij[$i]?> plaatsen vrij</th></tr>
 	<tr>
 		<td><?=$spelerNames[$i]?></td>
 	</tr>

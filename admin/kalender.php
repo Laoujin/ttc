@@ -6,7 +6,7 @@
 	if (!$security->Kalender())
 		header('Location: index.php');
 
-	$params = $db->GetParams(array(PARAM_STANDAARDUUR, PARAM_KAL_WEEKS_OLD, PARAM_KAL_WEEKS_NEW, PARAM_JAAR));
+	$params = $db->GetParams(array(PARAM_STANDAARDUUR, PARAM_KAL_WEEKS_OLD, PARAM_KAL_WEEKS_NEW, PARAM_JAAR, PARAM_TRAINING_KALENDER_DESC));
 
 	$matchJaar = date("Y");
 	$matchMaand = date("m");
@@ -20,9 +20,8 @@
 		if (!strlen($_POST['Beschrijving'])) $msg = "Geef een beschrijving!";
 		else
 		{
-			$fields = "datum, uur, beschrijving, istraining";
-			$is_training = $_POST['IsTraining'] == "1" ? 1 : 0;
-			$values = "'".$db->ParseDate($_POST['Datum'])."', '".$_POST['Uur']."', '".$db->Escape($_POST['Beschrijving'])."', ".$is_training;
+			$fields = "datum, uur, beschrijving, geleidetraining";
+			$values = "'".$db->ParseDate($_POST['Datum'])."', '".$_POST['Uur']."', '".$db->Escape($_POST['Beschrijving'])."', '".$db->Escape($_POST['GeleideTraining'])."'";
 			if (strlen($_POST['Week']) > 0)
 			{
 				$keys .= ", Week";
@@ -294,14 +293,34 @@ function ShiftFocus(moveTo, maxLength, maxValue, curValue)
 	</tr>
 	<tr>
 		<td>Geleide training?</td>
-		<td><input type=checkbox name=IsTraining value="1"> <font size="-1">(Wanneer aangevinkt moeten ingelogde leden zich inschrijven)</font></td>
+		<td>
+			<?php
+
+			?>
+
+
+			<input type="button" value="Dit is een geleide training." id="gtStart" />
+			<div id="gtHidden" style="display: none">
+				<input type=text name=GeleideTraining value="" size="75">
+				<br><font size="-1">Formaat: Uur1,Uur2,Omschrijving in kalender
+				<br>Binnen de omschrijving wordt {vrij1} en {vrij2} vervangen door het aantal vrije sloten voor de training.</font>
+			</div>
+		</td>
 	</tr>
 	<tr>
 		<td colspan=2 align=center><input type=submit name=Gebeurtenis value="Toevoegen"></td>
 	</tr>
 </table>
 
-
+<script>
+$(function() {
+	$("#gtStart").click(function() {
+		$(this).hide();
+		$("#gtHidden input:first").val("<?=$params[PARAM_TRAINING_KALENDER_DESC]?>");
+		$("#gtHidden").show();
+	});
+});
+</script>
 
 
 
