@@ -2,32 +2,32 @@
 	include_once 'include.php';
 	define("SPELERS", "spelers");
 	include_once '../include/header.php';
-	
+
 	if (!$security->Spelers() || !is_numeric($_GET['id']))
 		header('Location: index.php');
-	
-	$id = (int) $_GET['id']; 
-	if (isset($_POST['submitted'])) 
+
+	$id = (int) $_GET['id'];
+	if (isset($_POST['submitted']))
 	{
-		foreach($_POST AS $key => $value) 
-		{ 
+		foreach($_POST AS $key => $value)
+		{
 			$_POST[$key] = mysql_real_escape_string($value);
 		}
 
 		$LidNummerSporta = is_numeric($_POST['LidNummerSporta']) ? "'".$_POST['LidNummerSporta']."'" : "NULL";
-		$ComputerNummerVTTL = is_numeric($_POST['ComputerNummerVTTL']) ? ".".$_POST['ComputerNummerVTTL']."'" : "NULL";
+		$ComputerNummerVTTL = is_numeric($_POST['ComputerNummerVTTL']) ? "'".$_POST['ComputerNummerVTTL']."'" : "NULL";
 
-		$sql = "UPDATE `speler` SET `LinkKaartVTTL`='{$_POST['LinkKaartVTTL']}' , `Stijl`='{$_POST['Stijl']}' , `BesteSlag`='{$_POST['BesteSlag']}' , 
-				`ComputerNummerVTTL`=$ComputerNummerVTTL, `Adres`='{$_POST['Adres']}' , `Gemeente`='{$_POST['Gemeente']}' , 
-				`GSM`='{$_POST['GSM']}' , `Email`='{$_POST['Email']}', `LidNummerSporta`=$LidNummerSporta, 
-				`LinkKaartSporta`='{$_POST['LinkKaartSporta']}' WHERE `id`='$id'"; 
+		$sql = "UPDATE `speler` SET `LinkKaartVTTL`='{$_POST['LinkKaartVTTL']}' , `Stijl`='{$_POST['Stijl']}' , `BesteSlag`='{$_POST['BesteSlag']}' ,
+				`ComputerNummerVTTL`=$ComputerNummerVTTL, `Adres`='{$_POST['Adres']}' , `Gemeente`='{$_POST['Gemeente']}' ,
+				`GSM`='{$_POST['GSM']}' , `Email`='{$_POST['Email']}', `LidNummerSporta`=$LidNummerSporta,
+				`LinkKaartSporta`='{$_POST['LinkKaartSporta']}' WHERE `id`='$id'";
 
-		$db->Query($sql); 
+		$db->Query($sql);
 		$db->SetLastUpdate(SPELERS);
 
 		header('Location: spelers.php');
 	}
-	$row = mysql_fetch_array($db->Query("SELECT * FROM `speler` WHERE `id` = '$id' ")); 
+	$row = mysql_fetch_array($db->Query("SELECT * FROM `speler` WHERE `id` = '$id' "));
 
 	include_once 'admin_start.php';
 ?>
@@ -50,7 +50,7 @@
 	<tr><th colspan='2'>Sporta</th></tr>
 	<tr><th>LidNummerSporta</th><td><input type='text' name='LidNummerSporta' value="<?= htmlspecialchars($row['LidNummerSporta']) ?>" /> </td></th>
 	<tr><th>LinkKaartSporta</th><td><input type='text' name='LinkKaartSporta' value="<?= htmlspecialchars($row['LinkKaartSporta']) ?>" /> </td></th>
-	
+
 	<tr>
 		<td colspan=2 align=center><input type='submit' value='Editeer speler' /><input type='hidden' value='1' name='submitted' /></td>
 	</tr>
