@@ -3,6 +3,11 @@ define("RELATIVE_PATH", "");
 include_once 'include/header.php';
 if (is_numeric($_POST['id']) && $security->GeleideTraining())
 {
+	function get_inschrijving_desc($uur, $reedsIngeschreven)
+	{
+		return $reedsIngeschreven ? 'Ik kan toch niet meetrainen! :(' : 'Ik doe mee om '.$uur.'u!';
+	}
+
 	define('TRAINING_PERSONEN', 'training_personen');
 	$params = $db->GetParams(TRAINING_PERSONEN);
 	$result = $db->Query(
@@ -16,11 +21,20 @@ if (is_numeric($_POST['id']) && $security->GeleideTraining())
 
 	$plaatsenVrij = array($params[TRAINING_PERSONEN], $params[TRAINING_PERSONEN]);
 	$spelerNames = array('', '');
+	$reedsIngeschreven = array(0, 0);
 	while ($spelerRecord = mysql_fetch_array($result))
 	{
 		$ingeschrevenOpIndex = $spelerRecord['Uur'] == $uren[0] ? 0 : 1;
-		$spelerNames[$ingeschrevenOpIndex] .= ', '.$spelerRecord['NaamKort'];
 		$plaatsenVrij[$ingeschrevenOpIndex]--;
+		if ($spelerRecord['SpelerId'] != $_SESSION['userid'])
+		{
+			$spelerNames[$ingeschrevenOpIndex] .= ', '.$spelerRecord['NaamKort'];
+		}
+		else
+		{
+			$reedsIngeschreven[$ingeschrevenOpIndex] = 1;
+			$spelerNames[$ingeschrevenOpIndex] .= ', <b>'.$spelerRecord['NaamKort'].'</b>';
+		}
 	}
 	for ($i = 0; $i < 2; $i++)
 	{
@@ -28,22 +42,29 @@ if (is_numeric($_POST['id']) && $security->GeleideTraining())
 		else $spelerNames[$i] = substr($spelerNames[$i], 2);
 	}
 ?>
+<div class='popupClose'><a href=#><img src=img/close.gif border=0></a></div>
 <table class="maintable" width="100%">
-	<tr><th>Geleide Training <?=$uren[0].'u:'.$plaatsenVrij[0]?> plaatsen vrij</th></tr>
+	<?php for ($i = 0; $i < 2; $i++) { ?>
+	<tr><th>Geleide Training <?=$uren[$i].'u: '.$plaatsenVrij[$i]?> plaatsen vrij</th></tr>
 	<tr>
-		<td>
-		<?=$spelerNames[0]?>
-		</td>
+		<td><?=$spelerNames[$i]?></td>
 	</tr>
 	<tr>
 		<td align="center">
-			<input type="button" class="gtInschrijven" data-uur="<?=$uren[0]?>" value="Ik doe mee om <?=$uren[0]?>u!">
-			<input type="button" class="gtInschrijven" data-uur="<?=$uren[1]?>" value="Ik doe mee om <?=$uren[1]?>u!">
+			<input type="button"
+				class="gtInschrijven <?=($reedsIngeschreven[$i] ? '' : 'gtUitschrijven') ?>"
+				data-uur="<?=$uren[$i]?>"
+				value="<?=get_inschrijving_desc($uren[$i], $reedsIngeschreven[$i])?>">
 		</td>
 	</tr>
+	<?php } ?>
 </table>
 <script>
 $(function() {
+	function closePopup() {
+		$("#geleidetraining").hide();
+	}
+
 	$('.gtInschrijven').click(function() {
 		var $this = $(this);
 		$.post('api.php', {
@@ -52,8 +73,9 @@ $(function() {
 				kalenderId: <?=$_POST['id']?>,
 				spelerId: <?=$_SESSION['userid']?>
 			});
-		$('#geleidetraining').hide();
+		closePopup();
 	});
+	$(".popupClose").click(closePopup);
 });
 </script>
 <?php
