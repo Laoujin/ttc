@@ -14,7 +14,7 @@
 		}
 
 		$LidNummerSporta = is_numeric($_POST['LidNummerSporta']) ? "'".$_POST['LidNummerSporta']."'" : "NULL";
-		$ComputerNummerVTTL = is_numeric($_POST['ComputerNummerVTTL']) ? ".".$_POST['ComputerNummerVTTL']."'" : "NULL";
+		$ComputerNummerVTTL = is_numeric($_POST['ComputerNummerVTTL']) ? "'".$_POST['ComputerNummerVTTL']."'" : "NULL";
 
 		$rndPwd = createRandomPassword();
 		$sql = "INSERT INTO speler (Naam, NaamKort, LinkKaartVTTL, Stijl, BesteSlag, ComputerNummerVTTL, Adres, Gemeente, GSM, Email, LidNummerSporta, LinkKaartSporta, Toegang, Paswoord) 
