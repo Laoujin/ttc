@@ -44,9 +44,5 @@ include_once 'include/popup.php';
 					</td>
 				</tr>
 			</table>
-
-			<div style="margin-top: 7px; left: 15px; position: absolute; background-color: white; border: 1px solid black">
-				<img src="img/sponsors/smaele_small.jpg" border="0" width="200" height="141" />
-			</div>
 		</td>
 		<td valign="top" width='99%'>
