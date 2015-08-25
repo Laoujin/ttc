@@ -5,9 +5,9 @@ define("ANNOYING_DEBUG", false); // Print all SQL statements
 Class MySqlWrapper
 {
 	var $Connection;
-	var $Server = 'localhost';
-	var $Login = 'root';
-	var $Password = '';
+	var $Server = 'localhost:33060';
+	var $Login = 'ttcuser';
+	var $Password = 'test123';
 	var $Database = 'ttc_erembodegem';
 	
 	var $Spelers = Array();
