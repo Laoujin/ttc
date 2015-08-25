@@ -112,31 +112,22 @@ a.eetfestijn {
 							<table width=100% border=0 align=center>
 							<tr><th colspan=2><font size=+1>Menu</font></th></tr>
 							<tr>
-								<td width="99%"><b>Varkenshaasje</b> met sla, tomaten<br> en saus naar keuze</td><td width="1%">€15</td>
+								<td width="99%"><b>Varkenshaasje</b> met sla, tomaten<br> en saus naar keuze</td><td width="1%">&euro;15</td>
 							</tr>
 							<tr>
-								<td><b>Tongrolletjes</b> in mosterdsaus</td><td>€15</td>
+								<td><b>Tongrolletjes</b> in mosterdsaus</td><td>&euro;15</td>
 							</tr>
 							<tr>
-								<td><b>Kindermenu</b>: kip met appelmoes</td><td><font size=-1>€7,5</font></td>
+								<td><b>Kindermenu</b>: kip met appelmoes</td><td><font size=-1>&euro;7,5</font></td>
 							</tr>
 							</table>
 							
 							<br>
-							Steunkaarten zijn ook beschikbaar voor €3
+							Steunkaarten ook beschikbaar voor &euro;3
 						</div>
 					</td>
 				</tr>
-				
-				<tr>
-					<td>
-						<div class=sponsor>
-							<a href="http://www.desmaele.be/" target="_blank">
-								<img src="img/sponsors/smaele.jpg" title='Klik om de site van onze sponsor "Glashandel De Smaele" te bezoeken!' width="350" height="246" />
-							</a>
-						</div>
-					</td>
-				</tr>
+
 				<tr>
 					<td>
 						<div class=sponsor>
