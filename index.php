@@ -95,11 +95,11 @@ a.eetfestijn {
 	<tr>
 		<td width="340" valign=top>
 			<table width="100%" cellpadding=0 cellspacing=0>
-				<!--
+				
 				<tr>
 					<td>
 						<div id="eetfestijn">
-							<b>Zaterdag 21 september 2013<br>
+							<b>Zaterdag 17 oktober 2015<br>
 							Eetfestijn TTC Erembodegem</b>
 							
 							<br><br>
@@ -127,7 +127,7 @@ a.eetfestijn {
 						</div>
 					</td>
 				</tr>
-				-->
+				
 				<tr>
 					<td>
 						<div class=sponsor>
