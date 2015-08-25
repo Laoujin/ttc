@@ -21,6 +21,56 @@ $(function() {
 });
 </script>
 <div id="geleidetraining"></div>
+
+<style type="text/css">
+#eetfestijn {
+	width: 500px;
+	background: #5282a6;
+	color: #0D0140;
+	border: solid 3px white;
+	text-align: center;
+	padding: 5px;
+}
+a.eetfestijn {
+	text-decoration: underline;
+	color: #0D0140;
+}
+</style>
+
+<table width="100%" cellpadding=0 cellspacing=0>
+	<tr>
+		<td>
+			<div id="eetfestijn">
+				<b>Zaterdag 17 oktober 2015<br>
+				Eetfestijn TTC Erembodegem</b>
+				
+				<br><br>
+				
+				Van 18u00 tot 22u00 in zaal <a class="eetfestijn" href="https://maps.google.com/maps?q=Botermelkstraat+63,+9300+Aalst&hl=en&ll=50.953115,4.061058&spn=0.009449,0.023475&sll=50.952442,4.062345&sspn=0.001188,0.002934&t=m&hnear=Botermelkstraat+63,+Aalst+9300+Aalst,+Oost-Vlaanderen,+Vlaams+Gewest,+Belgium&z=16" target=_blank>Sint-Paulus</a><br>
+				Botermelkstraat 63, 9300 Aalst
+				
+				<br><br>
+				
+				<table width=100% border=0 align=center>
+				<tr><th colspan=2><font size=+1>Menu</font></th></tr>
+				<tr>
+					<td width="99%"><b>Varkenshaasje</b> met sla, tomaten<br> en saus naar keuze</td><td width="1%">&euro;15</td>
+				</tr>
+				<tr>
+					<td><b>Tongrolletjes</b> in mosterdsaus</td><td>&euro;15</td>
+				</tr>
+				<tr>
+					<td><b>Kindermenu</b>: kip met appelmoes</td><td><font size=-1>&euro;7,5</font></td>
+				</tr>
+				</table>
+				
+				<br>
+				Steunkaarten ook beschikbaar voor &euro;3
+			</div>
+		</td>
+	</tr>
+</table>
+
 <h1>Kalender</h1>
 <?php
 	$params = $db->GetParams(array(PARAM_STANDAARDUUR, PARAM_KAL_WEEKS_OLD, PARAM_KAL_WEEKS_NEW, PARAM_FRENOY_URL_SPORTA, PARAM_FRENOY_URL_VTTL, PARAM_FRENOY_LOGIN, PARAM_FRENOY_PASSWORD, PARAM_JAAR));
