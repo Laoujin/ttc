@@ -61,7 +61,7 @@
 									<td class=subheader>Ploeg:</td>
 									<td>
 									<?php
-									$result = $db->Query("SELECT Competitie, Reeks, ReeksType, ReeksCode, r.ID AS ReeksID FROM clubploegspeler cps JOIN clubploeg cp ON cps.ClubPloegID=cp.ID JOIN reeks r ON cp.ReeksID=r.ID WHERE cps.SpelerID=".$_GET['id']." AND r.Jaar=".$params[PARAM_JAAR]." AND r.Competitie='VTTL'");
+									$result = $db->Query("SELECT Competitie, Reeks, ReeksType, ReeksCode, r.ID AS ReeksID, cp.Code AS ThuisPloeg FROM clubploegspeler cps JOIN clubploeg cp ON cps.ClubPloegID=cp.ID JOIN reeks r ON cp.ReeksID=r.ID WHERE cps.SpelerID=".$_GET['id']." AND r.Jaar=".$params[PARAM_JAAR]." AND r.Competitie='VTTL'");
 									while ($ploegRecord = mysql_fetch_array($result))
 									{
 										echo DisplayReeks($ploegRecord, '', true)."<br>";
@@ -100,7 +100,7 @@
 									<td class=subheader>Ploeg:</td>
 									<td>
 									<?php
-									$result = $db->Query("SELECT Competitie, Reeks, ReeksType, ReeksCode, r.ID AS ReeksID FROM clubploegspeler cps JOIN clubploeg cp ON cps.ClubPloegID=cp.ID JOIN reeks r ON cp.ReeksID=r.ID WHERE cps.SpelerID=".$_GET['id']." AND r.Jaar=".$params[PARAM_JAAR]." AND r.Competitie='Sporta'");
+									$result = $db->Query("SELECT Competitie, Reeks, ReeksType, ReeksCode, r.ID AS ReeksID, cp.Code AS ThuisPloeg FROM clubploegspeler cps JOIN clubploeg cp ON cps.ClubPloegID=cp.ID JOIN reeks r ON cp.ReeksID=r.ID WHERE cps.SpelerID=".$_GET['id']." AND r.Jaar=".$params[PARAM_JAAR]." AND r.Competitie='Sporta'");
 									while ($ploegRecord = mysql_fetch_array($result))
 									{
 										echo DisplayReeks($ploegRecord, '', true)."<br>";
