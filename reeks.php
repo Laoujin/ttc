@@ -21,7 +21,7 @@
 		{
 			$comp = $reeksRecord['Competitie'];
 			
-			$result = $db->Query("SELECT ID, Code FROM clubploeg WHERE ReeksID=".$_GET['id']." AND ClubID=".CLUB_ID);
+			$result = $db->Query("SELECT ID, Code FROM clubploeg WHERE ReeksID=".$_GET['id']." AND ClubID=".CLUB_ID." AND Code='".$_GET['ploeg']."'"); // sql injection for the win
 			$record = mysql_fetch_array($result);
 			$clubploeg = $record['ID'];
 			
@@ -176,7 +176,7 @@
 			include_once 'include/menu_start_html.php';
 			PageHeader();
 			
-			$result = $db->Query("SELECT r.ID AS ReeksID, Competitie, Reeks, ReeksType, ReeksCode, cp.Code, cp.ID AS ClubPloeg, r.LinkID
+			$result = $db->Query("SELECT r.ID AS ReeksID, Competitie, Reeks, ReeksType, ReeksCode, cp.Code, cp.Code AS ThuisPloeg, cp.ID AS ClubPloeg, r.LinkID
 													FROM reeks r JOIN clubploeg cp ON r.ID=cp.ReeksID AND cp.ClubID=".CLUB_ID."
 													WHERE Competitie='".$comp."' AND Jaar=".$params[PARAM_JAAR]." ORDER BY cp.Code");
 

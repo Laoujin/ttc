@@ -59,8 +59,12 @@
 	{
 		$var = $record['Competitie'].' '.$record['Reeks'].' '.$record['ReeksType'].' '.$record['ReeksCode'];
 		if (isset($record['Jaar']) && $record['Jaar'] != date("Y")) $var = "Seizoen ".$record['Jaar']."-".($record['Jaar']*1 + 1).": $var";
-		if ($icon) $var = "<img src=img/kalender.bmp class=icon tag='Kalender' title='Kalender'></a> <a href=reeks.php?id=".$record['ReeksID'].($class != '' ? ' class='.$class : '').">".$var;
-		if (isset($record['ReeksID'])) $var = "<a href=reeks.php?id=".$record['ReeksID'].($class != '' ? ' class='.$class : '').">".$var."</a>";
+		if ($icon) {
+			$var = "<img src=img/kalender.bmp class=icon tag='Kalender' title='Kalender'></a> <a href=reeks.php?id=".$record['ReeksID']."&ploeg=".$record['ThuisPloeg'].($class != '' ? ' class='.$class : '').">".$var;
+		}
+		if (isset($record['ReeksID'])) {
+			$var = "<a href=reeks.php?id=".$record['ReeksID']."&ploeg=".$record['ThuisPloeg'].($class != '' ? ' class='.$class : '').">".$var."</a>";
+		}
 
 		return $var;
 	}
