@@ -44,5 +44,18 @@ include_once 'include/popup.php';
 					</td>
 				</tr>
 			</table>
+			<table>
+				<tr>
+					<td>
+						<div class="eetfestijntabel clubkampioen">
+							<strong>Clubkampioen 2014-2015</strong>
+							<br>
+							<a href="http://localhost/ttc/speler.php?id=34">Thomas Citters</a>
+							<br>
+							<a href="http://localhost/ttc/speler.php?id=34"><img src="img/speler/34.jpg" /></a>
+						</div>
+					</td>
+				</tr>
+			</table>
 		</td>
 		<td valign="top" width='99%'>

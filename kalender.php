@@ -22,25 +22,10 @@ $(function() {
 </script>
 <div id="geleidetraining"></div>
 
-<style type="text/css">
-#eetfestijn {
-	width: 500px;
-	background: #5282a6;
-	color: #0D0140;
-	border: solid 3px white;
-	text-align: center;
-	padding: 5px;
-}
-a.eetfestijn {
-	text-decoration: underline;
-	color: #0D0140;
-}
-</style>
-
 <table width="100%" cellpadding=0 cellspacing=0>
 	<tr>
-		<td>
-			<div id="eetfestijn">
+		<td width="500px">
+			<div class="eetfestijntabel">
 				<b>Zaterdag 17 oktober 2015<br>
 				Eetfestijn TTC Erembodegem</b>
 				

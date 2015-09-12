@@ -236,3 +236,21 @@ a:hover
 	top: 30px;
 	left: 60px;
 }
+
+
+.eetfestijntabel {
+	width: 500px;
+	background: #5282a6;
+	color: #0D0140;
+	border: solid 3px white;
+	text-align: center;
+	padding: 5px;
+}
+.clubkampioen {
+	width: 200px;
+	margin-left: 5px;
+}
+a.eetfestijn {
+	text-decoration: underline;
+	color: #0D0140;
+}
