@@ -152,6 +152,15 @@ a.eetfestijn {
 						</div>
 					</td>
 				</tr>
+				<tr>
+					<td>
+						<div class='sponsor'>
+							<a href="http://vdhkeukens.be/">
+								<img src="img/sponsors/vdhkeukens.png" style="border: 0" width="300" height="94" />
+							</a>
+						</div>
+					</td>
+				</tr>
 			</table>
 		</td>
 		<td valign=top width="625">
