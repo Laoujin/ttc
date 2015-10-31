@@ -2,7 +2,7 @@
 	define("RELATIVE_PATH", "");
 	include_once 'include/header.php';
 	$params = $db->GetParams(array(PARAM_LASTUPDATE, PARAM_JAAR));
-	
+
 	$lokaal = $db->GetClubLokaal(CLUB_ID, false);
 	$leden = $db->ExecuteScalar("SELECT COUNT(0) FROM speler WHERE (ClubIdVTTL=".CLUB_ID." OR ClubIdSporta=".CLUB_ID.") AND Gestopt IS NULL");
 	$ploegen = $db->ExecuteScalar("SELECT COUNT(0) FROM reeks WHERE jaar=".$params[PARAM_JAAR]);
@@ -19,10 +19,10 @@
 <link rel="shortcut icon" href="img/favicon.png" />
 <style type="text/css">
 #eetfestijn {
-	width: 100%; 
-	background: #5282a6; 
+	width: 100%;
+	background: #5282a6;
 	color: #0D0140;
-	border: solid 3px white; 
+	border: solid 3px white;
 	text-align: center;
 	padding: 5px;
 }
@@ -32,7 +32,7 @@ a.eetfestijn {
 }
 
 .sponsor {
-	width: 100%; 
+	width: 100%;
 	background: #5282a6;
 	color: black;
 	border: solid 3px white;
@@ -53,7 +53,7 @@ a.eetfestijn {
 .tkleinoffer {
 	background-image: url("img/sponsors/tkleinoffer.png");
 	background-repeat: no-repeat;
-    background-position: center; 
+    background-position: center;
 	height: 255px;
 }
 
@@ -95,20 +95,20 @@ a.eetfestijn {
 	<tr>
 		<td width="340" valign=top>
 			<table width="100%" cellpadding=0 cellspacing=0>
-				
-				<tr>
+
+				<!-- <tr>
 					<td>
 						<div id="eetfestijn">
 							<b>Zaterdag 17 oktober 2015<br>
 							Eetfestijn TTC Erembodegem</b>
-							
+
 							<br><br>
-							
+
 							Van 18u00 tot 22u00 in zaal <a class="eetfestijn" href="https://maps.google.com/maps?q=Botermelkstraat+63,+9300+Aalst&hl=en&ll=50.953115,4.061058&spn=0.009449,0.023475&sll=50.952442,4.062345&sspn=0.001188,0.002934&t=m&hnear=Botermelkstraat+63,+Aalst+9300+Aalst,+Oost-Vlaanderen,+Vlaams+Gewest,+Belgium&z=16" target=_blank>Sint-Paulus</a><br>
 							Botermelkstraat 63, 9300 Aalst
-							
+
 							<br><br>
-							
+
 							<table width=100% border=0 align=center>
 							<tr><th colspan=2><font size=+1>Menu</font></th></tr>
 							<tr>
@@ -121,12 +121,12 @@ a.eetfestijn {
 								<td><b>Kindermenu</b>: kip met appelmoes</td><td><font size=-1>&euro;7,5</font></td>
 							</tr>
 							</table>
-							
+
 							<br>
 							Steunkaarten ook beschikbaar voor &euro;3
 						</div>
 					</td>
-				</tr>
+				</tr> -->
 
 				<tr>
 					<td>
@@ -159,10 +159,10 @@ a.eetfestijn {
 				<tr>
 					<td colspan=3>
 						Welkom bij <a href="kalender.php"><b>TTC Erembodegem</b></a>
-											
+
 						<br><br>
 
-						Wij zijn een kleine, toffe tafeltennisclub met <?php echo $leden?> leden. 
+						Wij zijn een kleine, toffe tafeltennisclub met <?php echo $leden?> leden.
 						Ondanks onze beperkte kern, slagen we er toch in om met <?php echo $ploegen?> ploegen in competitie te treden, nl. <?php echo $ploegenVTTL?> ploegen in VTTL en <?php echo $ploegenSporta?> in Sporta.
 						Fairplay en gezelligheid staan centraal bij al onze tafeltennis-activiteiten!
 					</td>
@@ -177,8 +177,8 @@ a.eetfestijn {
 						&nbsp;
 					</td>
 					<td>
-						
-						<b>Het bestuur:</b> 
+
+						<b>Het bestuur:</b>
 						<br>
 						<?php
 						$mod = 0;
@@ -200,9 +200,9 @@ a.eetfestijn {
 						if (strlen($bestuursleden) > 1)
 							echo substr($bestuursleden, 2);
 						?>
-						
+
 						<br><br>
-						
+
 						<b>Ons lokaal:</b>
 						<br>
 						<?php echo $lokaal[0] ?>
@@ -211,7 +211,7 @@ a.eetfestijn {
 				<tr>
 					<td colspan=3 align=center>
 						<br><br><br><br><br><br><br><br>
-						Laatste update: 
+						Laatste update:
 						<br>
 						<?php echo $params[PARAM_LASTUPDATE]?>
 					</td>
@@ -225,7 +225,7 @@ a.eetfestijn {
 								<img src="img/sponsors/symphony.jpg" title='Klik om de site van onze sponsor "Doopsuiker Symphony" te bezoeken!' width="148" height="75" />
 							</a>
 						</td><td width="50%" align="center">
-						
+
 							Bakkerij <a href="http://www.bakkerijvanlierde.be/">Karel Van Lierde</a>
 							<br>Tel: 053 / 21 27 20
 						</td></tr></table>
