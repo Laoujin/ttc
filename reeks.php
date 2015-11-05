@@ -1,7 +1,7 @@
 <?php
 	if (!isset($_GET['id']) && !isset($_GET['competitie']) && !isset($_GET['ploeg']))
 		header("Location: kalender.php");
-	
+
 	include_once 'include/menu_start_dev.php';
 	include_once 'TabTAPI/TabTAPI.php';
 
@@ -13,18 +13,18 @@
 		echo "<h1>Reeks</h1>";
 		echo "<table width='100%' class='maintable'>";
 	}
-	
+
 	if (isset($_GET['id']) && is_numeric($_GET['id']))
 	{
 		$result = $db->Query("SELECT Competitie, Reeks, ReeksType, ReeksCode, LinkID, Jaar FROM reeks WHERE ID=".$_GET['id']);
 		if ($reeksRecord = mysql_fetch_array($result))
 		{
 			$comp = $reeksRecord['Competitie'];
-			
+
 			$result = $db->Query("SELECT ID, Code FROM clubploeg WHERE ReeksID=".$_GET['id']." AND ClubID=".CLUB_ID." AND Code='".$_GET['ploeg']."'"); // sql injection for the win
 			$record = mysql_fetch_array($result);
 			$clubploeg = $record['ID'];
-			
+
 			define("PAGE_TITLE", $record['Code']." Ploeg ".$comp);
 			define("PAGE_DESCRIPTION", "Kalender en links naar de resultaten van de ".$record['Code']." ploeg $comp.");
 			include_once 'include/menu_start_html.php';
@@ -70,7 +70,7 @@
 								} else {
 									echo "<tr>";
 								}
-								
+
 								echo "<td>" . $ranking->Position . "</td>";
 								echo "<td>" . $ranking->Team . "</td>";
 								echo "<td align='center'>" . $ranking->GamesPlayed . "</td>";
@@ -103,7 +103,7 @@
 		{
 			global $db;
 			global $params;
-			
+
 			$jaar = isset($record['Jaar']) && $record['Jaar'] != date("Y") ? "Seizoen ".$record['Jaar']."-".($record['Jaar']*1 + 1).": " : "";
 			?>
 			<tr>
@@ -132,24 +132,24 @@
 					$spelerResult = $db->Query("SELECT SpelerID, Kapitein, Naam, Klassement$comp FROM clubploegspeler cps JOIN speler s ON cps.SpelerID=s.ID JOIN klassement k ON s.Klassement$comp=k.Code WHERE ClubPloegID=".$record['ClubPloeg']." ORDER BY Kapitein DESC, Waarde$comp DESC");
 					while ($spelerRecord = mysql_fetch_array($spelerResult))
 						$spelers[] = $spelerRecord;
-					
+
 					if (count($spelers) % 4 == 1) $modLimit = 3;
 					else $modLimit = 4;
-					
+
 					$row1 = "";
 					$row2 = "";
-					
+
 					foreach ($spelers as $key => $spelerRecord)
 					{
 						$mod++;
-						
+
 						$row1 .= "<td align=center>".$db->Html($spelerRecord['Naam'])." (".$spelerRecord['Klassement'.$comp].")</td>";
 						$row2 .= "<td align=center>";
 						$row2 .= "<a href=speler.php?id=".$spelerRecord['SpelerID'].">";
 						$row2 .= GetImage($spelerRecord['SpelerID'], ($spelerRecord['Kapitein'] ? "Kapitein: " : "").$db->Html($spelerRecord['Naam'])." (".$spelerRecord['Klassement'.$comp].")");
 						$row2 .= "</a>";
 						$row2 .= "</td>";
-						
+
 						if ($mod % $modLimit == 0)
 						{
 							echo "<table width='100%' class='emptytable'><tr>".$row1."</tr><tr>".$row2."</tr></table>";
@@ -164,18 +164,18 @@
 			</tr>
 			<?php
 		}
-		
+
 		if (!isset($_GET['ploeg']) || !is_numeric($_GET['ploeg']))
 		{
 			// Alle ploegen
 			$id = $_GET['competitie'];
 			$comp = $id == COM_VTTL ? "VTTL" : "Sporta";
-			
+
 			define("PAGE_TITLE", 'Ploegen '.$comp);
 			define("PAGE_DESCRIPTION", "Overzicht van de spelers van alle ploegen in de $comp competitie.");
 			include_once 'include/menu_start_html.php';
 			PageHeader();
-			
+
 			$result = $db->Query("SELECT r.ID AS ReeksID, Competitie, Reeks, ReeksType, ReeksCode, cp.Code, cp.Code AS ThuisPloeg, cp.ID AS ClubPloeg, r.LinkID
 													FROM reeks r JOIN clubploeg cp ON r.ID=cp.ReeksID AND cp.ClubID=".CLUB_ID."
 													WHERE Competitie='".$comp."' AND Jaar=".$params[PARAM_JAAR]." ORDER BY cp.Code");
@@ -186,8 +186,8 @@
 		{
 			// 1 ploeg
 			$comp = $_GET['comp'] == "VTTL" ? "VTTL" : "Sporta";
-			
-			$result = $db->Query("SELECT r.ID AS ReeksID, Competitie, Reeks, ReeksType, ReeksCode, cp.Code, cp.ID AS ClubPloeg, r.LinkID, Jaar
+
+			$result = $db->Query("SELECT r.ID AS ReeksID, Competitie, Reeks, ReeksType, ReeksCode, cp.Code, cp.Code AS ThuisPloeg, cp.ID AS ClubPloeg, r.LinkID, Jaar
 													FROM reeks r JOIN clubploeg cp ON r.ID=cp.ReeksID AND cp.ClubID=".CLUB_ID."
 													WHERE r.ID=".$_GET['ploeg']);
 
@@ -197,9 +197,9 @@
 				define("PAGE_DESCRIPTION", "Overzicht van de spelers van de ".$record['Code']." ploeg $comp.");
 				include_once 'include/menu_start_html.php';
 				PageHeader();
-				
+
 				PrintPloeg($record, $comp);
-			}			
+			}
 		}
 	}
 ?>
