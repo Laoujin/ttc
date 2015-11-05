@@ -126,6 +126,7 @@
 			, ThuisClubPloegID, clubthuis.Naam AS ThuisNaam, ThuisPloeg, Competitie, Reeks, ReeksType, ReeksCode, reeks.ID AS ReeksID
 			, UitClubPloegID, clubuit.Naam AS UitNaam, TO_DAYS(Datum)-TO_DAYS(NOW()) AS Vandaag, Thuis, WEEK(Datum) AS JaarWeek, GeleideTraining
 			, v.ID AS VerslagID, v.UitslagThuis, v.UitslagUit, v.WO, v.Details AS HeeftVerslag, kalender.ID AS KalenderID, clubthuis.ID AS ThuisClubID, clubuit.ID AS UitClubID
+			, FrenoyMatchId
 			FROM kalender
 			LEFT JOIN clubploeg thuis ON ThuisClubPloegID=thuis.ID
 			LEFT JOIN reeks ON thuis.ReeksID=reeks.ID
@@ -189,9 +190,25 @@
 							}
 							else
 							{
-								// TODO: Without the MatchId or MatchUniqueId this is not going to work :p
-								//$frenoyApi->SetCompetition($record['Competitie']);
-								//$frenoyApi->GetMatches($record['Week']);
+								// fetch score from Frenoy and update in db
+								$frenoyApi->SetCompetition($record['Competitie']);
+								$matches = $frenoyApi->GetMatches($record['Week']);
+
+								$this_match = array_filter($matches->TeamMatchesEntries, function ($match) use($record) {
+									return $match->MatchId == $record['FrenoyMatchId'] && isset($match->Score);
+								});
+								$this_match = array_shift($this_match);
+
+								if (count($this_match) > 0 && strpos($this_match->Score, '-') !== false) {
+									$score = $this_match->Score;
+									$home = substr($score, 0, strpos($score, '-'));
+									$out = substr($score, strpos($score, '-') + 1);
+
+									$frenoy_report = $record['KalenderID'] . ", 1, $home, $out, 0, 0";
+									$db->Query("INSERT INTO verslag (KalenderID, SpelerID, UitslagThuis, UitslagUit, WO, Details) VALUES ($frenoy_report)");
+
+									echo $home . '-' . $out;
+								}
 
 								echo "&nbsp;";
 							}

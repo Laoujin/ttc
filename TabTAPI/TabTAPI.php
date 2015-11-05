@@ -17,7 +17,7 @@ class TabTAPI
 		$this->_clubCodeVTTL = $clubVTTL;
 		$this->_clubCodeSporta = $clubSporta;
 		$this->_defaultYear = $year;
-		
+
 		$this->SetCompetition("VTTL");
 	}
 
@@ -100,11 +100,11 @@ class TabTAPI
 		  "Level" => null,
 		  "ShowDivisionName" => "short" /* no, yes, short */
 		);
-		
-		echo "<pre>";
-		print_r($params);
-		echo "</pre>";
-		
+
+		// echo "<pre>";
+		// print_r($params);
+		// echo "</pre>";
+
 		return $this->soapCall("GetMatches", $params);
 	}
 
