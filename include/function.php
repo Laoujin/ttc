@@ -194,23 +194,29 @@
 								$frenoyApi->SetCompetition($record['Competitie']);
 								$matches = $frenoyApi->GetMatches($record['Week']);
 
-								$this_match = array_filter($matches->TeamMatchesEntries, function ($match) use($record) {
-									return $match->MatchId == $record['FrenoyMatchId'] && isset($match->Score);
-								});
-								$this_match = array_shift($this_match);
-
-								if (count($this_match) > 0 && strpos($this_match->Score, '-') !== false) {
-									$score = $this_match->Score;
-									$home = substr($score, 0, strpos($score, '-'));
-									$out = substr($score, strpos($score, '-') + 1);
-
-									$frenoy_report = $record['KalenderID'] . ", 1, $home, $out, 0, 0";
-									$db->Query("INSERT INTO verslag (KalenderID, SpelerID, UitslagThuis, UitslagUit, WO, Details) VALUES ($frenoy_report)");
-
-									echo $home . '-' . $out;
+								if (is_array($matches->TeamMatchesEntries)) {
+									$this_match = array_filter($matches->TeamMatchesEntries, function ($match) use($record) {
+										return $match->MatchId == $record['FrenoyMatchId'] && isset($match->Score);
+									});
+									$this_match = array_shift($this_match);
+								} else {
+									$this_match = $matches->TeamMatchesEntries;
 								}
 
-								echo "&nbsp;";
+								if ($this_match) {
+									if (count($this_match) > 0 && strpos($this_match->Score, '-') !== false) {
+										$score = $this_match->Score;
+										$home = substr($score, 0, strpos($score, '-'));
+										$out = substr($score, strpos($score, '-') + 1);
+
+										$frenoy_report = $record['KalenderID'] . ", 1, $home, $out, 0, 0";
+										$db->Query("INSERT INTO verslag (KalenderID, SpelerID, UitslagThuis, UitslagUit, WO, Details) VALUES ($frenoy_report)");
+
+										echo $home . '&nbsp;-&nbsp;' . $out;
+									}
+								} else {
+									echo "&nbsp;";
+								}
 							}
 							echo "</label>";
 							if ($security->Verslag() || $record['HeeftVerslag'] || ($record['Vandaag'] <= 0 && $record['VerslagID'] == ''))
