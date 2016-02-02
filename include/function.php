@@ -209,7 +209,11 @@
 										$home = substr($score, 0, strpos($score, '-'));
 										$out = substr($score, strpos($score, '-') + 1);
 
-										$frenoy_report = $record['KalenderID'] . ", 1, $home, $out, 0, 0";
+										if (!is_numeric($home) || !is_numeric($out)) {
+											$frenoy_report = $record['KalenderID'] . ", 1, NULL, NULL, 1, 0";
+										} else {
+											$frenoy_report = $record['KalenderID'] . ", 1, $home, $out, 0, 0";
+										}
 										$db->Query("INSERT INTO verslag (KalenderID, SpelerID, UitslagThuis, UitslagUit, WO, Details) VALUES ($frenoy_report)");
 
 										echo $home . '&nbsp;-&nbsp;' . $out;
