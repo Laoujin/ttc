@@ -50,9 +50,9 @@ include_once 'include/popup.php';
 						<div class="eetfestijntabel clubkampioen">
 							<strong>Clubkampioen 2014-2015</strong>
 							<br>
-							<a href="http://localhost/ttc/speler.php?id=34">Thomas Citters</a>
+							<a href="speler.php?id=34">Thomas Citters</a>
 							<br>
-							<a href="http://localhost/ttc/speler.php?id=34"><img src="img/speler/34.jpg" /></a>
+							<a href="speler.php?id=34"><img src="img/speler/34.jpg" /></a>
 						</div>
 					</td>
 				</tr>
